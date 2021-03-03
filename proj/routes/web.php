@@ -66,11 +66,11 @@ Route::get('/order/index', 'HomeController@orderIndex')->name('order-index');
 
 /////////ROTTE PER CHIAMATA AXIOS //////////////
 
-Route::get('/gettypo' , 'UserController@getAllTypologies')
-    ->name('get-all-typology');
+Route::get('/getTypologies' , 'UserController@getTypologies')
+    ->name('get-typologies');
 
-Route::get('/getRestaurantByType/{id}' , 'UserController@getTypologyRestaurants')
-    ->name('get-typology-restaurants');
+Route::get('/getUserId/{id}' , 'UserController@getUsers')
+    ->name('get-users');
 
 
 ///////////// ROTTE PER RICERCA CLIENTE ///////////

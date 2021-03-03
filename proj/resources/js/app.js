@@ -1,5 +1,3 @@
-
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -16,27 +14,26 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  const app = new Vue({
      el: '#app',
      data: {
-         showtypo: true,
-         showRestaurant: false,
-         allTypoArray: [],
-         randomTypoArray: [],
-         restaurantArray: [],
+         allTypologies: [],
+         userArray: [],
+         showTypology: true,
+         showUser: false,
      },
      mounted: function() {
-         axios.get('/gettypo')
+         axios.get('/getTypologies')
              .then(response => {
-                 console.log(response.data);
-                 this.allTypoArray = response.data;
+                 this.allTypologies = response.data;
+                 console.log(this.allTypologies);
              });
      },
      methods: {
          getRestaurant(id) {
-             axios.get('/getRestaurantByType/' + id)
+             axios.get('/getUserId/' + id)
                  .then(response => {
-                     this.restaurantArray = response.data;
-                     this.showtypo = !this.showtypo;
-                     this.showRestaurant = !this.showRestaurant;
-                     console.log(response.data);
+                     this.userArray = response.data;
+                     this.showTypology = !this.showTypology;
+                     this.showUser = !this.showUser;
+                     console.log(this.userArray);
                  });
          }
      }

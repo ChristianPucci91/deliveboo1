@@ -15,13 +15,13 @@ class UserController extends Controller
     return view('clientPage.user-show',compact('user'));
   }
 
-  public function getAllTypologies(){
-     $typo = Typology::all();
-     return response() -> json($typo);
+  public function getTypologies(){
+     $typologies = Typology::all();
+     return response() -> json($typologies);
  }
- public function getTypologyRestaurants($id){
-     $rests = Typology::findOrFail($id) -> users() -> get() ;
-     return response() ->json($rests);
+ public function getUsers($id){
+     $users = Typology::findOrFail($id) -> users() -> get() ;
+     return response() ->json($users);
  }
 
 }
