@@ -4,25 +4,25 @@
   <div class="container">
 
     {{-- Back to Typologies button --}}
-    <div v-if="showRestaurant" class="console" @click="showRestaurant = !showRestaurant">
-        <i class="fas fa-arrow-left"></i>
+    <div v-if="showUser" @click="showUser = !showUser">
+        <i class="fas fa-times"></i>
     </div>
 
     <section>
         <div class="row">
             {{-- typology container --}}
-            <div class="btn btn-primary m-4" v-for="type in allTypoArray" @click="getRestaurant(type.id)" v-if="!showRestaurant" class="">
+            <div class="btn btn-primary m-4" v-for="typology in allTypologies" @click="getRestaurant(typology.id)" v-if="!showUser" >
               <li>
-                @{{type.type}}
+                @{{typology.type}}
               </li>
               <br>
             </div>
         </div>
 
         {{-- restaurant container --}}
-        <a v-for="rest in restaurantArray" :href=`{{route('show-menu','')}}/${rest.id}`>
-            <div  class="typologybox" v-if="showRestaurant">
-                @{{rest.name}}
+        <a v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
+            <div  v-if="showUser">
+                @{{user.name}}
             </div>
         </a>
 
