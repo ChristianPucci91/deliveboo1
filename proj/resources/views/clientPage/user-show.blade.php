@@ -46,8 +46,8 @@
 
 @section('contenuto-pagina')
   <ul>
-    
-    @foreach ($rest -> dishes as $dish)
+
+    @foreach ($user -> dishes as $dish)
       <User
        :id = "'{{$dish -> id}}'"
        :name = "'{{$dish -> name}}'"
