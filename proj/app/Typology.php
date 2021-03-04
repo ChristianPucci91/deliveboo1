@@ -8,7 +8,8 @@ class Typology extends Model
 {
   // inseriamo dati da compilare
   protected $fillable = [
-    'type'
+    'type',
+    'logo'
   ];
 
   // relazione many to many
