@@ -98,7 +98,7 @@
                 <div class="row">
                         <div class="col-12">
                     <h1 class="text-center margini">WELCOME TO BOOLIVEROO</h1>
-                        <p><a class="btn btn-primary btn-lg" href="{{route('live_search')}}" role="button">Scopri i nostri ristoranti</a></p>
+                        <p><a class="btn btn-primary btn-lg" href="{{ route('clientSearch')}}" role="button">Scopri i nostri ristoranti</a></p>
                     </div>
                 </div>
                 </div>
