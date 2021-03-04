@@ -18,6 +18,7 @@ class CreateTypologiesTable extends Migration
 
             // inserisco colonne typologies
             $table->string('type');
+            $table->string('logo');
 
             $table->timestamps();
         });

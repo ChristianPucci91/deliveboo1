@@ -32,10 +32,38 @@ class TypologySeeder extends Seeder
           'Sushi',
           'Libanese',
         ];
+        $logos = [
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+          "https://www.italiaatavola.net/images/contenutiarticoli/Sushi-salute-quali-rischi-Anche-riso-puo-far-danni-1.jpg",
+        ];
 
-        foreach ($typologies as $typology) {
+        // foreach ($typologies as $typology) {
+        //   $newtypology = new Typology();
+        //   $newtypology -> type = $typology;
+        //   $newtypology -> save();
+        //
+        //   $users = User::inRandomOrder()
+        //   ->limit(rand(1,5)) ->get();
+        //   $newtypology -> users() -> attach($users);
+        // }
+
+        for ($i=0; $i < 15 ; $i++) {
           $newtypology = new Typology();
-          $newtypology -> type = $typology;
+          $newtypology -> type = $typologies[$i];
+          $newtypology -> logo = $logos[$i];
           $newtypology -> save();
 
           $users = User::inRandomOrder()
