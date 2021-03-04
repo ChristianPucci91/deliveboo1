@@ -49948,6 +49948,7 @@ function init() {
     data: {
       allTypologies: [],
       userArray: [],
+      randUsers: [],
       showTypology: true,
       showUser: false
     },
@@ -49958,6 +49959,7 @@ function init() {
         _this.allTypologies = response.data;
         console.log(_this.allTypologies);
       });
+      this.getRandUsers();
     },
     methods: {
       getRestaurant: function getRestaurant(id) {
@@ -49968,6 +49970,21 @@ function init() {
           _this2.showTypology = !_this2.showTypology;
           _this2.showUser = !_this2.showUser;
           console.log(_this2.userArray);
+        });
+      },
+      getRandUsers: function getRandUsers() {
+        var _this3 = this;
+
+        axios.get('/getRandUsers').then(function (response) {
+          while (_this3.randUsers.length < 6) {
+            var j = Math.floor(Math.random() * (10 - 1)) + 1;
+
+            while (!_this3.randUsers.includes(response.data[j])) {
+              _this3.randUsers.push(response.data[j]);
+            }
+          }
+
+          console.log(_this3.randUsers);
         });
       }
     }

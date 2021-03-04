@@ -74,6 +74,9 @@ Route::get('/getTypologies' , 'UserController@getTypologies')
 Route::get('/getUserId/{id}' , 'UserController@getUsers')
     ->name('get-users');
 
+Route::get('/getRandUsers','UserController@getRandUsers')
+    ->name('get-rand-users');
+
 
 ///////////// ROTTE PER RICERCA CLIENTE ///////////
 
