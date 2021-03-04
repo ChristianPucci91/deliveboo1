@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 use App\Order;
 use App\User;
@@ -128,6 +129,53 @@ class HomeController extends Controller
       $user = Auth::user();
       $orders = Order::all();
       return view('pages.order-index',compact('orders', 'user'));
+    }
+
+    //// TEST UPLOAD IMG
+    public function updateImg(Request $request) {
+      $request -> validate([
+         'img' => 'required|file'
+      ]);
+
+      $this -> deleteImg();
+
+      $image = $request -> file('img');
+
+      $ext = $image -> getClientOriginalExtension();
+      $name = rand(100000,999999). '_' . time();
+      $file = $name . '.'. $ext;
+
+      $user = Auth::user();
+      $user -> img = $file;
+      $user -> save();
+
+      $fileStore = $image -> storeAs('img', $file ,'public');
+
+      return redirect() -> back();
+
+    }
+    public function clearImg() {
+
+      $this -> deleteImg();
+
+      $user = Auth::user();
+      $user -> img = null;
+      $user -> save();
+      return redirect() -> back();
+    }
+
+    public function deleteImg() {
+
+      $user = Auth::user();
+
+      try {
+
+        $fileName = $user -> img;
+
+        $file = storage_path('app/public/img/' . $fileName);
+        File::delete($file);
+
+      } catch (\Exception $e) {}
     }
 
 }
