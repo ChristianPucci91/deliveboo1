@@ -11005,3 +11005,24 @@ header {
   margin: 50px;
 }
 
+#backArrow {
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-size: 50px;
+}
+
+#restcard {
+  height: 70px;
+  width: 360px;
+}
+
+#user-name {
+  font-size: large;
+  color: red;
+}
+
+#restcard:hover {
+  background-color: yellow;
+  text-decoration: none;
+}
+
