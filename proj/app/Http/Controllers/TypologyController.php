@@ -15,8 +15,8 @@ class TypologyController extends Controller
         return view('clientPage.client-index');
     }
     public function showMenu($id){
-        $rest = User::findOrFail($id);
-        return view('clientPage.user-show' ,compact('rest'));
+        $user = User::findOrFail($id);
+        return view('clientPage.user-show' ,compact('user'));
     }
 
 }
