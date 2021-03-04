@@ -2,28 +2,52 @@
 
 @section('contenuto-pagina')
 
-  <form class="" action="{{ route('dish-update', $dish -> id)}}" method="post">
+  <form class="form-group mt-4" action="{{ route('dish-update', $dish -> id)}}" method="post">
     @csrf
     @method('post')
 
     <label for="name">Name</label>
-    <input type="text" name="name" value="{{ $dish -> name}}">
+    <input type="text" name="name" value="{{ $dish -> name}}" class="form-control mb-3 @error('name') is-invalid @enderror">
+      @error('name')
+         <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+         </span>
+      @enderror
     <label for="ingredients">Ingredients</label>
-    <input type="text" name="ingredients" value="{{ $dish -> ingredients}}">
+    <input type="text" name="ingredients" value="{{ $dish -> ingredients}}" class="form-control mb-3 @error('ingredients') is-invalid @enderror">
+      @error('ingredients')
+         <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+         </span>
+      @enderror
     <label for="price">Price</label>
-    <input type="text" name="price" value="{{ $dish -> price}}">
-    <label for="visible">Visible</label>
+    <input type="text" name="price" value="{{ $dish -> price}}" class="form-control mb-3 @error('price') is-invalid @enderror">
+      @error('price')
+         <span class="invalid-feedback" role="alert">
+             <strong>{{ $message }}</strong>
+         </span>
+      @enderror
 
-    <input  checked  type="radio" name="visible"
-      @if ($dish -> visible == 1)
-       checked
-     @endif value="1">
-    <input type="radio" name="visible"
-     @if ($dish -> visible == 0)
+    <div class="form-check mt-2">
+
+      <input checked class="form-check-input" type="radio" name="visible"
+        @if ($dish -> visible == 1)
          checked
-     @endif value="0">
+       @endif value="1">
+      <label for="visible" class="form-check-label" >Visible</label>
 
-    <input type="submit" name="" value="salva">
+    </div>
+    <div class="form-check mt-2">
+
+      <input class="form-check-input" type="radio" name="visible"
+        @if ($dish -> visible == 0)
+         checked
+       @endif value="0">
+      <label for="visible" class="form-check-label" >Not Visible</label>
+
+    </div>
+
+    <input type="submit" name="" value="salva" class="btn btn-primary mt-3">
 
   </form>
 
