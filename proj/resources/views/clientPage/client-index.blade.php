@@ -1,11 +1,12 @@
 @extends('layouts.main-layout')
 @section('contenuto-pagina')
 
+
   <div class="container .mt-4" id="grand">
 
     {{-- Back to Typologies button --}}
     <div v-if="showUser" @click="showUser = !showUser">
-        <i class="fas fa-times"></i>
+      <i class="fas fa-arrow-left" id="backArrow"></i>
     </div>
 
     <section>
@@ -30,8 +31,8 @@
  
 
         {{-- restaurant container --}}
-        <a class="card" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
-            <div  v-if="showUser" class="card-body">
+        <a v-if="showUser" class="card" id="restcard" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
+            <div class="card-body" id="user-name">
                 @{{user.name}}
             </div>
         </a>
