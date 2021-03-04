@@ -14,74 +14,26 @@
 </div>
 </section>
 
-<section>
+<section id="app">
   <div class="container">
+
     <h2>La selezione di Booliveroo</h2>
     <div class="row text-center">
-      <div class="col-md-4 pb-1 pb-md-0">
+
+      <div v-for="user in randUsers" class="col-md-4 pb-1 pb-md-0">
         <div class="card">
-          <img class="card-img-top" src="" alt="Not found image">
+          <img class="card-img-top" :src="user.img" alt="Not found image">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="card-title">@{{user.name}}</h5>
+            <p class="card-text">@{{user.indirizzo}}.</p>
             <a href="#" class="btn btn-primary">Find</a>
           </div>
         </div>
       </div>
-      <div class="col-md-4 pb-1 pb-md-0">
-        <div class="card">
-          <img class="card-img-top" src="" alt="Not found image">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Find</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 pb-1 pb-md-0">
-        <div class="card">
-          <img class="card-img-top" src="" alt="Not found image">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Find</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row text-center">
-      <div class="col-md-4 pb-1 pb-md-0">
-        <div class="card">
-          <img class="card-img-top" src="" alt="Not found image">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Find</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 pb-1 pb-md-0">
-        <div class="card">
-          <img class="card-img-top" src="" alt="Not found image">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Find</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 pb-1 pb-md-0">
-        <div class="card">
-          <img class="card-img-top" src="" alt="Not found image">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Find</a>
-          </div>
-        </div>
-      </div>
+
     </div>
 
+  </div>
 </section>
 
 @endsection
