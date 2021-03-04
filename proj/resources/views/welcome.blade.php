@@ -9,7 +9,11 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+<<<<<<< HEAD
         <!-- Styles test 2 -->
+=======
+        <!-- Styles test 2-->
+>>>>>>> christian
         <style>
             html, body {
                 background-color: #fff;
