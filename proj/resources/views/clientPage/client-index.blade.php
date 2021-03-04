@@ -18,7 +18,7 @@
               <br>
             </div> --}}
             <div class="card" v-for="typology in allTypologies" style="width: 18rem;" v-if="!showUser">
-              <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+              <img class="card-img-top" :src="typology.logo" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">@{{typology.type}}</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -27,7 +27,7 @@
             </div>
         </div>
 
- 
+
 
         {{-- restaurant container --}}
         <a class="card" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
