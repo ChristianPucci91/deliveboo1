@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 use App\Order;
 use App\User;
@@ -58,6 +60,22 @@ class HomeController extends Controller
       // inseriamo il nuovo piatto creato nel database associato
       // all'utente loggato
       $data = $request -> all(); // dati inseriti nel form
+      Validator::make($data,
+        [
+            'name' => 'required|string|min:5',
+            'ingredients' => 'required|string',
+            'price' => 'required|integer',
+        ],
+        [
+            'name.min' => 'Minimo 4 caratteri per il nome',
+            'name.required' => 'Campo obbligatorio',
+            'ingredients.required' => 'Campo obbligatorio',
+            'price.required' => 'Campo obbligatorio',
+            'price.integer' => 'Inserire un valore numerico',
+
+        ])
+        ->validate();
+
       $user = Auth::user(); // utente loggato
 
       $newDish = Dish::make($data); // $newDish = dati inseriti
@@ -76,8 +94,24 @@ class HomeController extends Controller
 
     public function dishUpdate(Request $request, $id) {
       // aggiorniamo la modifica del piatto
-      $dish = Dish::findOrFail($id);
-      $dish -> update($request -> all());
+      $data = $request -> all();
+      Validator::make($data,
+        [
+            'name' => 'required|string|min:4|max:10',
+            'ingredients' => 'required|string',
+            'price' => 'required|integer',
+        ],
+        [
+            'name.min' => 'Minimo 4 caratteri per il nome',
+            'name.required' => 'Campo obbligatorio',
+            'ingredients.required' => 'Campo obbligatorio',
+            'price.required' => 'Campo obbligatorio',
+            'price.integer' => 'Inserire un valore numerico',
+
+        ])
+        ->validate();
+        $dish = Dish::findOrFail($id);
+        $dish -> update($request -> all());
       return redirect() -> route('dish-index');
 
     }
@@ -95,6 +129,53 @@ class HomeController extends Controller
       $user = Auth::user();
       $orders = Order::all();
       return view('pages.order-index',compact('orders', 'user'));
+    }
+
+    //// TEST UPLOAD IMG
+    public function updateImg(Request $request) {
+      $request -> validate([
+         'img' => 'required|file'
+      ]);
+
+      $this -> deleteImg();
+
+      $image = $request -> file('img');
+
+      $ext = $image -> getClientOriginalExtension();
+      $name = rand(100000,999999). '_' . time();
+      $file = $name . '.'. $ext;
+
+      $user = Auth::user();
+      $user -> img = $file;
+      $user -> save();
+
+      $fileStore = $image -> storeAs('img', $file ,'public');
+
+      return redirect() -> back();
+
+    }
+    public function clearImg() {
+
+      $this -> deleteImg();
+
+      $user = Auth::user();
+      $user -> img = null;
+      $user -> save();
+      return redirect() -> back();
+    }
+
+    public function deleteImg() {
+
+      $user = Auth::user();
+
+      try {
+
+        $fileName = $user -> img;
+
+        $file = storage_path('app/public/img/' . $fileName);
+        File::delete($file);
+
+      } catch (\Exception $e) {}
     }
 
 }

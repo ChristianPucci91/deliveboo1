@@ -46,17 +46,22 @@
 
 @section('contenuto-pagina')
   <ul>
-    
-    @foreach ($rest -> dishes as $dish)
+     <h1>Ecco il nostro menu:</h1>
+    <img src="{{ $user -> img}}" alt="">
+
+
+    @foreach ($user -> dishes as $dish)
       <User
-       :id = "'{{$dish -> id}}'"
-       :name = "'{{$dish -> name}}'"
-       :ingredients = "'{{$dish -> ingredients}}'"
-       :visible = "'{{$dish -> visible }}'"
+      v-if="{{ $dish -> visible}} == 1"
+
+      :id = "'{{$dish -> id}}'"
+      :name = "'{{$dish -> name}}'"
+      :ingredients = "'{{$dish -> ingredients}}'"
+      :visible = "'{{$dish -> visible }}'"
 
       ></User>
+      <a v-if="{{ $dish -> visible}} == 1" href="{{ route('home')}}"><i class="fas fa-shopping-cart"></i>Aggiungi al carrello</a>
 
-      <a href="{{ route('home')}}"><i class="fas fa-shopping-cart"></i>Aggiungi al carrello</a>
     @endforeach
 
   </ul>
