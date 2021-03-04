@@ -84,3 +84,11 @@ Route::get('/clientSearch', 'TypologyController@clientSearch')
     ->name('clientSearch');
 Route::get('/restaurant/{id}' , 'TypologyController@showMenu')
     ->name('show-menu');
+
+///////// ROTTE PER ULOAD IMG ///////////
+
+Route::post('/uploadImg','HomeController@updateImg')
+    ->name('upload-img');
+
+Route::get('/clearImg','HomeController@clearImg')
+    ->name('clear-img');
