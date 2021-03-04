@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 use App\Order;
 use App\User;
@@ -58,6 +59,22 @@ class HomeController extends Controller
       // inseriamo il nuovo piatto creato nel database associato
       // all'utente loggato
       $data = $request -> all(); // dati inseriti nel form
+      Validator::make($data,
+        [
+            'name' => 'required|string|min:5',
+            'ingredients' => 'required|string',
+            'price' => 'required|integer',
+        ],
+        [
+            'name.min' => 'Minimo 4 caratteri per il nome',
+            'name.required' => 'Campo obbligatorio',
+            'ingredients.required' => 'Campo obbligatorio',
+            'price.required' => 'Campo obbligatorio',
+            'price.integer' => 'Inserire un valore numerico',
+
+        ])
+        ->validate();
+
       $user = Auth::user(); // utente loggato
 
       $newDish = Dish::make($data); // $newDish = dati inseriti
@@ -76,8 +93,24 @@ class HomeController extends Controller
 
     public function dishUpdate(Request $request, $id) {
       // aggiorniamo la modifica del piatto
-      $dish = Dish::findOrFail($id);
-      $dish -> update($request -> all());
+      $data = $request -> all();
+      Validator::make($data,
+        [
+            'name' => 'required|string|min:4|max:10',
+            'ingredients' => 'required|string',
+            'price' => 'required|integer',
+        ],
+        [
+            'name.min' => 'Minimo 4 caratteri per il nome',
+            'name.required' => 'Campo obbligatorio',
+            'ingredients.required' => 'Campo obbligatorio',
+            'price.required' => 'Campo obbligatorio',
+            'price.integer' => 'Inserire un valore numerico',
+
+        ])
+        ->validate();
+        $dish = Dish::findOrFail($id);
+        $dish -> update($request -> all());
       return redirect() -> route('dish-index');
 
     }
