@@ -26,7 +26,26 @@
                      <li>{{ $typology -> type}}</li>
                   @endforeach
                 </ul>
+                <h3>Aggiungi una foto al tuo ristorante</h3>
+                <form class="" action="{{ route('upload-img')}}"
+                                method="post"  enctype="multipart/form-data">
+
+                      @csrf
+                      @method('post')
+
+                      <input type="file" class="form-control border-0" name="img" value="">
+
+                      <input type="submit" class="mt-5" name="" value="Send image">
+
+                    </form>
               </div>
+              @if (Auth::user()-> img)
+
+                <h4>User icon</h4>
+
+                <img src="{{ asset('storage/img/' . Auth::user() -> img) }}">
+
+              @endif
 
             </div>
         </div>

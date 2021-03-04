@@ -130,4 +130,26 @@ class HomeController extends Controller
       return view('pages.order-index',compact('orders', 'user'));
     }
 
+    //// TEST UPLOAD IMG
+    public function updateImg(Request $request) {
+      $request -> validate([
+         'img' => 'required|file'
+      ]);
+
+      $image = $request -> file('img');
+
+      $ext = $image -> getClientOriginalExtension();
+      $name = rand(100000,999999). '_' . time();
+      $file = $name . '.'. $ext;
+
+      $user = Auth::user();
+      $user -> img = $file;
+      $user -> save();
+
+      $fileStore = $image -> storeAs('img', $file ,'public');
+
+      return redirect() -> back();
+
+    }
+
 }
