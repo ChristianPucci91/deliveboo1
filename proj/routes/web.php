@@ -89,3 +89,6 @@ Route::get('/restaurant/{id}' , 'TypologyController@showMenu')
 
 Route::post('/uploadImg','HomeController@updateImg')
     ->name('upload-img');
+
+Route::get('/clearImg','HomeController@clearImg')
+    ->name('clear-img');

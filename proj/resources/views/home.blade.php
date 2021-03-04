@@ -35,9 +35,11 @@
 
                       <input type="file" class="form-control border-0" name="img" value="">
 
-                      <input type="submit" class="mt-5" name="" value="Send image">
+                      <input type="submit" class="mt-5 btn btn-primary" name="" value="Update">
+                      <a href="{{ route('clear-img')}}" class="btn btn-danger">Delete</a>
 
                     </form>
+
               </div>
               @if (Auth::user()-> img)
 
