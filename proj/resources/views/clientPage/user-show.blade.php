@@ -2,29 +2,10 @@
 @extends('layouts.main-layout')
 
 @section('contenuto-pagina')
-  {{-- <ul>
-  <ul>
-     <h1>Ecco il nostro menu:</h1>
-    <img src="{{ $user -> img}}" alt="">
-
-
-    @foreach ($user -> dishes as $dish)
-      <User
-      v-if="{{ $dish -> visible}} == 1"
-
-      :id = "'{{$dish -> id}}'"
-      :name = "'{{$dish -> name}}'"
-      :ingredients = "'{{$dish -> ingredients}}'"
-      :visible = "'{{$dish -> visible }}'"
-
-      ></User>
-      <a v-if="{{ $dish -> visible}} == 1" href="{{ route('home')}}"><i class="fas fa-shopping-cart"></i>Aggiungi al carrello</a>
-
-    @endforeach
-
-  </ul> --}}
-
+  
   <div class="row">
+    <h1>Ecco il nostro menu:</h1>
+    <img src="{{ $user -> img}}" alt="">
     @foreach ($user -> dishes as $dish)
       <div class="col-sm-6 mb-4">
         <div class="card rounded bg-light" v-if="{{ $dish -> visible}} == 1">
