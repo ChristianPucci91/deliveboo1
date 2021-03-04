@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- RIVEDERE IL RESPONSIVE -->
       @if (Route::has('login'))
-          <div class="top-right links navbar-nav mr-auto">
+          <div class="right links navbar-nav mr-auto nav navbar-nav navbar-right">
               @auth
                   <a href="{{ url('/home') }}" class="nav-link">Home</a>
               @else

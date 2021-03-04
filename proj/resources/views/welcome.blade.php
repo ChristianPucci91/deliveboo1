@@ -26,7 +26,7 @@
           <div class="card-body">
             <h5 class="card-title">@{{user.name}}</h5>
             <p class="card-text">@{{user.indirizzo}}.</p>
-            <a href="#" class="btn btn-primary">Find</a>
+            <a :href=`{{route('show-menu','')}}/${user.id}` class="btn btn-primary">Scopri il Menu</a>
           </div>
         </div>
       </div>
