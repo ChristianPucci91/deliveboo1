@@ -3,6 +3,10 @@
 
 @section('contenuto-pagina')
   {{-- <ul>
+  <ul>
+     <h1>Ecco il nostro menu:</h1>
+    <img src="{{ $user -> img}}" alt="">
+
 
     @foreach ($user -> dishes as $dish)
       <User
