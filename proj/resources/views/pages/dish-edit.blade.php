@@ -21,6 +21,7 @@
          </span>
       @enderror
     <label for="price">Price</label>
+    {{-- <input type="text" name="price" value="{{ $dish -> price / 100}}" class="form-control mb-3 @error('price') is-invalid @enderror"> --}}
     <input type="text" name="price" value="{{ $dish -> price}}" class="form-control mb-3 @error('price') is-invalid @enderror">
       @error('price')
          <span class="invalid-feedback" role="alert">

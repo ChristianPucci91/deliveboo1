@@ -49909,8 +49909,7 @@ function init() {
       var _this = this;
 
       axios.get('/getTypologies').then(function (response) {
-        _this.allTypologies = response.data;
-        console.log(_this.allTypologies);
+        _this.allTypologies = response.data; // console.log(this.allTypologies);
       });
       this.getRandUsers();
     },
@@ -49935,9 +49934,8 @@ function init() {
             while (!_this3.randUsers.includes(response.data[j])) {
               _this3.randUsers.push(response.data[j]);
             }
-          }
+          } // console.log(this.randUsers);
 
-          console.log(_this3.randUsers);
         });
       }
     }

@@ -24,7 +24,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
          axios.get('/getTypologies')
              .then(response => {
                  this.allTypologies = response.data;
-                 console.log(this.allTypologies);
+                 // console.log(this.allTypologies);
              });
              this.getRandUsers();
      },
@@ -50,7 +50,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
                    }
 
                  }
-                   console.log(this.randUsers);
+                   // console.log(this.randUsers);
                });
          }
      }

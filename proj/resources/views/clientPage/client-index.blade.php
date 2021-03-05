@@ -10,6 +10,7 @@
     </div>
 
     <section>
+
         {{-- row --}}
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
           {{-- colonna --}}
@@ -35,10 +36,18 @@
 
 
 
+        {{-- <label for="" v-for="typology in allTypologies">
+          <input type="checkbox" name="" value="" @click="getRestaurant(typology.id)">
+          @{{typology.type}}
+        </label> --}}
+
+
+
         {{-- restaurant container --}}
-        <a v-if="showUser" class="card" id="restcard" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
+        <a class="card" id="restcard" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
             <div class="card-body" id="user-name">
                 @{{user.name}}
+                {{-- @{{user.pivot.typology_id}} --}}
             </div>
         </a>
 

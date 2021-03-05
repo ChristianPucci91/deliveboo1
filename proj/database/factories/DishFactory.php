@@ -12,7 +12,8 @@ $factory->define(Dish::class, function (Faker $faker) {
         'name' => $faker -> randomElement($array = array (
           'Croissant','Pizza','Hamburger','Pasta','Gelato','Sushi','Patatine fritte','Panino','Piadina')),
         'ingredients' => $faker -> sentence($nbWords = 6, $variableNbWords = true),
-        'price' => rand(1,20),
+        // 'price' => rand(100,2000),
+        'price' => rand(1,200),
         'visible' => $faker -> boolean,
     ];
 });

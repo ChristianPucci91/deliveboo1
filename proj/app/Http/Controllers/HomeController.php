@@ -59,19 +59,20 @@ class HomeController extends Controller
     public function dishStore(Request $request) {
       // inseriamo il nuovo piatto creato nel database associato
       // all'utente loggato
+      // $request = $this -> getCorrectPrice($request);
       $data = $request -> all(); // dati inseriti nel form
       Validator::make($data,
         [
             'name' => 'required|string|min:5',
             'ingredients' => 'required|string',
-            'price' => 'required|integer',
+            'price' => 'required|numeric',
         ],
         [
             'name.min' => 'Minimo 4 caratteri per il nome',
             'name.required' => 'Campo obbligatorio',
             'ingredients.required' => 'Campo obbligatorio',
             'price.required' => 'Campo obbligatorio',
-            'price.integer' => 'Inserire un valore numerico',
+            'price.numeric' => 'Inserire un valore numerico',
 
         ])
         ->validate();
@@ -94,19 +95,20 @@ class HomeController extends Controller
 
     public function dishUpdate(Request $request, $id) {
       // aggiorniamo la modifica del piatto
+      // $request = $this -> getCorrectPrice($request);
       $data = $request -> all();
       Validator::make($data,
         [
             'name' => 'required|string|min:4|max:10',
             'ingredients' => 'required|string',
-            'price' => 'required|integer',
+            'price' => 'required|numeric',
         ],
         [
             'name.min' => 'Minimo 4 caratteri per il nome',
             'name.required' => 'Campo obbligatorio',
             'ingredients.required' => 'Campo obbligatorio',
             'price.required' => 'Campo obbligatorio',
-            'price.integer' => 'Inserire un valore numerico',
+            'price.numeric' => 'Inserire un valore numerico',
 
         ])
         ->validate();
@@ -115,6 +117,20 @@ class HomeController extends Controller
       return redirect() -> route('dish-index');
 
     }
+
+    // funzione per moltiplicare per 100 il prezzo (inserito dall'utente)
+    // private function getCorrectPrice($request) {
+    //
+    //   $price = $request -> get('price') * 100;
+    //
+    //   $request -> merge([
+    //     'price' => $price
+    //   ]);
+    //
+    //   return $request;
+    //
+    // }
+
       public function dishDelete($id) {
       // cancellazione del piatto
       $dish = Dish::findOrFail($id);
