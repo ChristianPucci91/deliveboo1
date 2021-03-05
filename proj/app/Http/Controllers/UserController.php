@@ -23,5 +23,9 @@ class UserController extends Controller
      $users = Typology::findOrFail($id) -> users() -> get() ;
      return response() ->json($users);
  }
+ public function getRandUsers(){
+    $users = User::all();
+    return response() ->json($users);
+ }
 
 }
