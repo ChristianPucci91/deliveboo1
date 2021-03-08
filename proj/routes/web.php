@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ Route::get('/clearImg','HomeController@clearImg')
 
 
 ///////// ROTTA PAYMENT ///////////
-Route::get('/payment', function () {
+Route::get('/hosted', function () {
 $gateway = new Braintree\Gateway([
   'environment' => config('services.braintree.environment'),
   'merchantId' => config('services.braintree.merchantId'),
@@ -106,7 +106,7 @@ $gateway = new Braintree\Gateway([
 
 $token = $gateway->ClientToken()->generate();
 
-  return view('test-payment', [
+  return view('hosted', [
     'token' => $token
   ]);
 });
@@ -122,12 +122,21 @@ $gateway = new Braintree\Gateway([
 // dd($request);
 $amount = $request->amount;
 $nonce = $request->payment_method_nonce;
+$firstName = $request->firstName;
+$lastName = $request->lastName;
+$email = $request->email;
 
 $result = $gateway->transaction()->sale([
   'amount' => $amount,
   'paymentMethodNonce' => $nonce,
-  'options' => [
-      'submitForSettlement' => true
+  'customer' => [
+    'firstName'=> $firstName,
+    'lastName' => $lastName,
+    'email'=> $email,
+
+  ],
+  'options'=> [
+    'submitForSettlement' => true
   ]
 ]);
 

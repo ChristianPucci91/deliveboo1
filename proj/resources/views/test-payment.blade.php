@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+
     <title>Payment page</title>
   </head>
   <body>
@@ -44,6 +45,9 @@
       <button class="button" type="submit"><span>Test Transaction</span></button>
   </form>
 
+
+
+
   <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
   <script>
       var form = document.querySelector('#payment-form');
@@ -75,6 +79,7 @@
           });
         });
       });
+
   </script>
 
   </body>
