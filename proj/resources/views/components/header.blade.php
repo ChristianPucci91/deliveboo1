@@ -40,7 +40,13 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <a href="{{route('cart.index')}}" class="btn btn-primary float-right"><i class="fas fa-shopping-cart"></i></a>
+                <a href="{{route('cart.index')}}" class="btn btn-primary float-right"><i class="fas fa-shopping-cart"></i>
+                
+                    <div class="badge">
+                        {{Cart::session('_token') -> getTotalQuantity()}}
+                    </div>
+
+                </a>
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">

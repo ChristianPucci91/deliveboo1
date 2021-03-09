@@ -18,9 +18,16 @@
 @foreach ($cartItems as $item)
             <tr>
                 <td scope="row">{{$item->name}}</td>
-                <td>{{$item->price}}</td>
                 <td>
-                    <input type="number" value = {{$item->quantity}}>
+                    {{-- {{$item->price}} --}}
+                    {{Cart::session('_token')->get($item->id) -> getPriceSum()}}
+                </td>
+                <td>
+                    <form action="{{route('cart.update', $item->id)}}">
+                        <input name ="quantity" type="number" value = {{$item->quantity}}>
+                        <input type="submit" value = 'save'>
+                    </form>    
+
                 </td>
                 <td>
                     <a href="{{route('cart.destroy', $item -> id)}}">Delete</a>
@@ -30,6 +37,12 @@
         </tbody>
     </table>
 </table>
+
+<h3>
+    Total Price: $ {{\Cart::session('_token')->getTotal()}}
+</h3>
+
+<a class="btn btn-primary" href="#" role="button">Proceed to checkout</a>
 
 {{-- {{dd(\Cart::session('_token')->getContent())}} --}}
 @endsection

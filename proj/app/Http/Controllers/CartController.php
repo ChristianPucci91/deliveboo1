@@ -25,9 +25,21 @@ class CartController extends Controller
         $cartItems = \Cart::session('_token') -> getContent();
         return view('clientPage.index-cart', compact('cartItems'));
     }
+
     public function destroy($itemId) 
     {
         \Cart::session('_token')->remove($itemId);
+        return back();
+    }
+
+    public function update($rowId) 
+    {
+        \Cart::session('_token')->update($rowId, [
+            'quantity' => [
+                'relative' => false,
+                'value' => request('quantity')
+            ]
+        ]);
         return back();
     }
 }
