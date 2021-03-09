@@ -133,7 +133,6 @@ $result = $gateway->transaction()->sale([
     'firstName'=> $firstName,
     'lastName' => $lastName,
     'email'=> $email,
-
   ],
   'options'=> [
     'submitForSettlement' => true
