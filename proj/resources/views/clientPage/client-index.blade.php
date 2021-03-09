@@ -1,8 +1,9 @@
 @extends('layouts.main-layout')
 @section('contenuto-pagina')
 
-
-  <div class="container .mt-4" id="grand">
+{{-- <div class="container1"> --}}
+  
+  <div class="container vh-80 mb-5 .mt-4" id="grand"> 
 
     {{-- Back to Typologies button --}}
     <div v-if="showUser" @click="showUser = !showUser">
@@ -31,10 +32,8 @@
 
           </div>
 
-        </div>
-
-
-
+        </div> {{-- se cancello sto div e lo metto in fondo il footer si aggiusta ma si rompe il resto --}}
+        
         {{-- restaurant container --}}
         <a v-if="showUser" class="card" id="restcard" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
             <div class="card-body" id="user-name">
@@ -45,4 +44,5 @@
 
 
     </section>
+  </div>
 @endsection

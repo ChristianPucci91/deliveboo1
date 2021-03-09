@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <div class="container">
+    {{-- <div class="container"> --}}
 
       <!-- header -->
       @include('components.header')
@@ -17,11 +17,16 @@
     </div>
       <!-- contenuto pagina -->
       {{-- @yield('test') --}}
+    {{-- </div> --}}
 
+    {{-- creare contenitore per il footer --}}
+    <div class="container1">  
       <!-- footer -->
       @include('components.footer')
-
     </div>
+
+    
+    
     <script src="{{asset('js/app.js')}}"></script>
   </body>
 </html>
