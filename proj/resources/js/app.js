@@ -15,6 +15,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
      el: '#app',
      data: {
          allTypologies: [],
+         flightListType: [],
          userArray: [],
          randUsers:[],
          showTypology: true,
@@ -24,9 +25,15 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
          axios.get('/getTypologies')
              .then(response => {
                  this.allTypologies = response.data;
+
+                 // this.allTypologies.forEach((element) => {
+                 //  element.visibile = false;
+                 // });
+
                  console.log(this.allTypologies);
              });
              this.getRandUsers();
+
      },
      methods: {
          getRestaurant(id) {
@@ -50,10 +57,11 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
                    }
 
                  }
-                   console.log(this.randUsers);
+                   // console.log(this.randUsers);
                });
          }
      }
- });
+
+   });
 }
 document.addEventListener("DOMContentLoaded",init);
