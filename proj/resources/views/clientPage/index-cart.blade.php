@@ -26,7 +26,7 @@
                     <form action="{{route('cart.update', $item->id)}}">
                         <input name ="quantity" type="number" value = {{$item->quantity}}>
                         <input type="submit" value = 'save'>
-                    </form>    
+                    </form>
 
                 </td>
                 <td>
@@ -42,7 +42,7 @@
     Total Price: $ {{\Cart::session('_token')->getTotal()}}
 </h3>
 
-<a class="btn btn-primary" href="#" role="button">Proceed to checkout</a>
+<a class="btn btn-primary" href="{{url('/hosted')}}" role="button">Proceed to checkout</a>
 
 {{-- {{dd(\Cart::session('_token')->getContent())}} --}}
 @endsection
