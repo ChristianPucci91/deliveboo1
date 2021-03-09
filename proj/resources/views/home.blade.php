@@ -4,7 +4,7 @@
 
 <div class="container d-flex justify-content-center">
 
-  <div class="card col-12 col-md-8 col-lg-6">
+  <div class="card" style="min-width: 50%;">
     <div class="p-3">
       @if (Auth::user()-> img)
         <img class="card-img-top" src="{{ asset('storage/img/' . Auth::user() -> img) }}">
