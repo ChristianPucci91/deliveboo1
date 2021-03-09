@@ -1,56 +1,43 @@
-@extends('layouts.app')
+@extends('layouts.main-layout')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+@section('contenuto-pagina')
 
-            </div>
-            <div class="card">
+<div class="container d-flex justify-content-center">
 
-              <div class="card-header">
-                <h1>Benvenuto {{ $user -> name}}</h1>
-                <p>Qui trovi i tuoi dati di registrazione</p>
-                <ul class="card-body">
-                  <li>Name:{{ $user -> name }}</li>
-                  <li>Address:{{ $user -> indirizzo }}</li>
-                  <li>Mail:{{ $user -> email }}</li>
-                  <li>Piva:{{ $user -> piva }}</li>
-
-
-                  <br><br>
-
-                  <br><br>
-                  @foreach ($user -> typologies as $typology)
-                     <li>{{ $typology -> type}}</li>
-                  @endforeach
-                </ul>
-                <h3>Aggiungi una foto al tuo ristorante</h3>
-                <form class="" action="{{ route('upload-img')}}"
-                                method="post"  enctype="multipart/form-data">
-
-                      @csrf
-                      @method('post')
-
-                      <input type="file" class="form-control border-0" name="img" value="">
-
-                      <input type="submit" class="mt-5 btn btn-primary" name="" value="Update">
-                      <a href="{{ route('clear-img')}}" class="btn btn-danger">Delete</a>
-
-                    </form>
-
-              </div>
-              @if (Auth::user()-> img)
-
-                <h4>User icon</h4>
-
-                <img src="{{ asset('storage/img/' . Auth::user() -> img) }}">
-
-              @endif
-
-            </div>
-        </div>
+  <div class="card" style="min-width: 50%;">
+    <div class="p-3">
+      @if (Auth::user()-> img)
+        <img class="card-img-top" src="{{ asset('storage/img/' . Auth::user() -> img) }}">
+      @endif
     </div>
+    <div class="card-body">
+      <h4 class="card-title">Benvenuto {{ $user -> name}}</h4>
+      <p class="card-text">Mail: {{ $user -> email }}</p>
+      <p class="card-text">Address: {{ $user -> indirizzo }}</p>
+      <p class="card-text">Piva: {{ $user -> piva }}</p>
+      <p class="card-text">
+        Tiopolgie:
+        @foreach ($user -> typologies as $typology)
+          &#174;{{ $typology -> type}}
+        @endforeach
+      </p>
+      {{-- inserimento immagine profilo --}}
+      <form class="" action="{{ route('upload-img')}}" method="post"  enctype="multipart/form-data">
+        @csrf
+        @method('post')
+
+        <input type="file" class="form-control border-0 p-0" name="img" value="">
+        {{-- contenitore bottoni --}}
+        <div class="d-flex">
+          <input type="submit" class=" mr-1 btn btn-primary" name="" value="Update">
+          <a href="{{ route('clear-img')}}" class=" ml-1 btn btn-danger">Delete</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
 </div>
+
+
 @endsection

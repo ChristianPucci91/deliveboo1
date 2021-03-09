@@ -92,3 +92,11 @@ Route::post('/uploadImg','HomeController@updateImg')
 
 Route::get('/clearImg','HomeController@clearImg')
     ->name('clear-img');
+
+//////// ROTTA CARRELLO/////////
+
+Route::get('/add-to-cart/{dish}', 'CartController@add')->name('cart.add');
+
+Route::get('/cart', 'CartController@index')->name('cart.index');
+
+Route::get('/cart/destroy/{itemId}', 'CartController@destroy')->name('cart.destroy');
