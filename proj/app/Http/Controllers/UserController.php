@@ -22,21 +22,9 @@ class UserController extends Controller
  public function getUsers($id){
      $users = Typology::findOrFail($id) -> users() -> get() ;
 
-     // foreach ($users as $user) {
-     //
-     //   foreach ($user -> typologies as $typology) {
-         // var_dump($typology -> id);
-         // $type = [];
-         // $type .= $typology -> id;
-         // $type[] = $typology -> id;
-          // var_dump($user . $type[0]);
-       // }
-       // $ristorante = $user -> name;
-       // dd($ristorante);
-     // }
-
      return response() ->json($users);
  }
+
  public function getRandUsers(){
     $users = User::all();
     return response() ->json($users);

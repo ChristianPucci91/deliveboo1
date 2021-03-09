@@ -49900,6 +49900,7 @@ function init() {
     el: '#app',
     data: {
       allTypologies: [],
+      flightListType: [],
       userArray: [],
       randUsers: [],
       showTypology: true,
@@ -49909,7 +49910,11 @@ function init() {
       var _this = this;
 
       axios.get('/getTypologies').then(function (response) {
-        _this.allTypologies = response.data; // console.log(this.allTypologies);
+        _this.allTypologies = response.data; // this.allTypologies.forEach((element) => {
+        //  element.visibile = false;
+        // });
+
+        console.log(_this.allTypologies);
       });
       this.getRandUsers();
     },
@@ -49938,7 +49943,102 @@ function init() {
 
         });
       }
-    }
+    } // filtersAppied: [],
+    // usersFiltrated: [],
+    // loading: true
+    // },
+    // mounted: function() {
+    //     axios.get('/getTypologies')
+    //         .then(response => {
+    //             this.flightListType = response.data;
+    //
+    //             this.flightListType.forEach((element) => {
+    //              element.visibile = false;
+    //             });
+    //
+    //             // console.log(this.flightListType);
+    //         });
+    //
+    //     axios.get('/getUsers')
+    //         .then(response => {
+    //             this.userArray = response.data;
+    //
+    //             console.log(this.userArray);
+    //         });
+    //
+    //         // console.log(this.filtersAppied);
+    //
+    //   // this.usersFiltrated = this.userArray.filter(typologies => this.filtersAppied.includes(typologies));
+    //
+    // },
+    // methods: {
+    //  arrayContainsArray: function(superset, subset) {
+    //   return subset.every(function(value) {
+    //     return superset.indexOf(value) >= 0;
+    //   });
+    //
+    //  },
+    //  isPositive(x){
+    //    return x > 0
+    //  },
+    //  prova(){
+    //    console.log(this.filtersAppied);
+    //  },
+    //  filterUsers(){
+    //
+    //    this.usersFiltrated = [];
+    //
+    //    let check;
+    //
+    //    this.userArray.forEach((user) => {
+    //
+    //      // this.check = this.filtersAppied.every(ai => user.typos.includes(ai));
+    //      // if (!this.check) {
+    //      //   this.usersFiltrated.push(user);
+    //      // }
+    //
+    //      if (this.filtersAppied.includes(user.typos)) {
+    //        this.usersFiltrated.push(user);
+    //      } else {
+    //        this.usersFiltrated.push('no filtro');
+    //      }
+    //    });
+    //
+    //    // console.log(this.check);
+    //    console.log(this.usersFiltrated);
+    //
+    //  }
+    //  getRestaurant(id) {
+    //          axios.get('/getUserId/' + id)
+    //              .then(response => {
+    //                  this.userArray = response.data;
+    //                  this.showTypology = !this.showTypology;
+    //                  this.showUser = !this.showUser;
+    //                  console.log(this.userArray);
+    //              });
+    //   }
+    // },
+    //  computed: {
+    //   filteredFlights: function() {
+    //     var vm = this;
+    //     if (!vm.filtersAppied.length) {
+    //         return vm.flightListType;
+    //      }
+    //      else {
+    //        var result;
+    //        result = vm.flightListType.filter(function(item) {
+    //          var selected = vm.filtersAppied;
+    //          var arrays = [];
+    //          arrays.push(item.havayolu, item.bagaj, item.kalkis, item.varis);
+    //          console.log(arrays);
+    //          return vm.arrayContainsArray(arrays, selected);
+    //        });
+    //        console.log(result);
+    //        return result;
+    //      }
+    //   }
+    //  }
+
   });
 }
 

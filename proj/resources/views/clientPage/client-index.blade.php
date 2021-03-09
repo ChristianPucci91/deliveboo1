@@ -17,6 +17,7 @@
           <div class="col mb-4" v-for="typology in allTypologies" style="width: 18rem;" v-if="!showUser">
             {{-- card tipologia --}}
             <div class="card text-center h-100">
+            {{-- <div class="card text-center h-100" :class="(typology.visibile ? 'border-success' : '')" @click="getRestaurant(typology.id), typology.visibile = !typology.visibile"> --}}
               {{-- logo tipologia --}}
               <img class="card-img-top" :src="typology.logo" alt="Card image cap">
 
@@ -34,24 +35,13 @@
 
         </div>
 
-
-
-        {{-- <label for="" v-for="typology in allTypologies">
-          <input type="checkbox" name="" value="" @click="getRestaurant(typology.id)">
-          @{{typology.type}}
-        </label> --}}
-
-
-
         {{-- restaurant container --}}
-        <a class="card" id="restcard" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
+        <a v-if="showUser" class="card" id="restcard" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
             <div class="card-body" id="user-name">
                 @{{user.name}}
                 {{-- @{{user.pivot.typology_id}} --}}
             </div>
         </a>
-
-
 
     </section>
 @endsection
