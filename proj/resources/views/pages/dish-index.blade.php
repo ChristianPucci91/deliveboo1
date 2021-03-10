@@ -25,10 +25,7 @@
             </div>
           </div>
         </div>
-        <p class="mb-1">{{$dish -> ingredients}}.</p>
-        {{-- <p class="mb-1">{{$dish -> price / 100}}&euro;</p> --}}
-        <p class="mb-1">{{$dish -> price}}&euro;</p>
-        <p class="mb-1">{{$dish -> visible}}</p>
+
       </div>
     @endforeach
   </div>

@@ -5,8 +5,23 @@
 //     margin-right: 0px;
 //     margin-left: 0px;
 // }
+
+.jumbotron{
+  color: #000;
+}
+
 .card {
     margin-bottom: 35px;
+    color: #000;
+
+    &:hover{
+      transform: scale(1.02);
+      transition: 0.25s;
+    }
+}
+
+th, td{
+  color: #fff;
 }
 
 body {
@@ -16,6 +31,7 @@ body {
     justify-content: space-between;
     background-color: #5b2020;
     min-height: 100vh;
+    color: #fff;
 }
 
 // html,

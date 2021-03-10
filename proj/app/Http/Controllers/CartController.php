@@ -18,7 +18,7 @@ class CartController extends Controller
             'attributes' => array(),
             'associatedModel' => $dish
         ));
-        return redirect() -> route('cart.index');
+        return back();
     }
     public function index()
     {
@@ -26,13 +26,13 @@ class CartController extends Controller
         return view('clientPage.index-cart', compact('cartItems'));
     }
 
-    public function destroy($itemId) 
+    public function destroy($itemId)
     {
         \Cart::session('_token')->remove($itemId);
         return back();
     }
 
-    public function update($rowId) 
+    public function update($rowId)
     {
         \Cart::session('_token')->update($rowId, [
             'quantity' => [
