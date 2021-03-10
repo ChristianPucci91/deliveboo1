@@ -49900,6 +49900,7 @@ function init() {
     el: '#app',
     data: {
       allTypologies: [],
+      flightListType: [],
       userArray: [],
       randUsers: [],
       showTypology: true,
@@ -49909,7 +49910,10 @@ function init() {
       var _this = this;
 
       axios.get('/getTypologies').then(function (response) {
-        _this.allTypologies = response.data;
+        _this.allTypologies = response.data; // this.allTypologies.forEach((element) => {
+        //  element.visibile = false;
+        // });
+
         console.log(_this.allTypologies);
       });
       this.getRandUsers();
@@ -49935,9 +49939,8 @@ function init() {
             while (!_this3.randUsers.includes(response.data[j])) {
               _this3.randUsers.push(response.data[j]);
             }
-          }
+          } // console.log(this.randUsers);
 
-          console.log(_this3.randUsers);
         });
       }
     }
@@ -50149,8 +50152,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\phpboolean\deliveboo1\proj\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\phpboolean\deliveboo1\proj\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\adria\Desktop\deliveboo1\proj\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\adria\Desktop\deliveboo1\proj\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

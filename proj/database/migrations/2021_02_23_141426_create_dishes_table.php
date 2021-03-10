@@ -22,7 +22,8 @@ class CreateDishesTable extends Migration
             // inserisco colonne dishes
             $table->string('name');
             $table->text('ingredients');
-            $table->integer('price');
+            // $table->integer('price');
+            $table->float('price', 8, 2);
             $table->boolean('visible');
 
             $table->timestamps();
