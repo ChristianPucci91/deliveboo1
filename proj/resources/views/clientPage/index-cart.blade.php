@@ -20,7 +20,7 @@
                 <td scope="row">{{$item->name}}</td>
                 <td>
                     {{-- {{$item->price}} --}}
-                    {{Cart::session('_token')->get($item->id) -> getPriceSum()}}
+                    {{Cart::session('_token')->get($item->id) -> getPriceSum()}}&euro;
                 </td>
                 <td>
                     <form action="{{route('cart.update', $item->id)}}">
@@ -39,7 +39,7 @@
 </table>
 
 <h3>
-    Total Price: $ {{\Cart::session('_token')->getTotal()}}
+    Total Price: {{\Cart::session('_token')->getTotal()}}&euro;
 </h3>
 
 <a class="btn btn-primary" href="{{url('/hosted')}}" role="button">Proceed to checkout</a>

@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      
+
       <!-- RIVEDERE IL RESPONSIVE -->
       @if (Route::has('login'))
           <div class="right links navbar-nav mr-auto nav navbar-nav navbar-right">
@@ -40,8 +40,8 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <a href="{{route('cart.index')}}" class="btn btn-primary float-right"><i class="fas fa-shopping-cart"></i>
-                
+                <a href="{{route('cart.index')}}" class="nav-link"><i class="fas fa-shopping-cart"></i>
+
                     <div class="badge">
                         {{Cart::session('_token') -> getTotalQuantity()}}
                     </div>
@@ -63,7 +63,7 @@
                           <div class="alert alert-success" role="alert">
                               {{ session('status') }}
                           </div>
-                      @endif 
+                      @endif
 
                       {{-- {{ __('You are logged in!') }} --}}
                   </div>
