@@ -21,8 +21,9 @@
     <div class="row text-center row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
 
       <div v-for="user in randUsers" class="col pb-1">
-        <div class="card">
-          <img class="card-img-top" :src="user.img" alt="Not found image">
+        <div class="card animation">
+          {{-- <img class="card-img-top" :src="user.img" alt="Not found image"> --}}
+          <img class="card-img-top" :src="'http://localhost:8000/storage/img/' + user.img" alt="Not found image">
           <div class="card-body">
             <h5 class="card-title">@{{user.name}}</h5>
             <p class="card-text">@{{user.indirizzo}}.</p>

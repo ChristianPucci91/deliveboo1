@@ -153,13 +153,14 @@ class HomeController extends Controller
          'img' => 'required|file'
       ]);
 
-      $this -> deleteImg();
+      // $this -> deleteImg();
 
       $image = $request -> file('img');
 
       $ext = $image -> getClientOriginalExtension();
       $name = rand(100000,999999). '_' . time();
       $file = $name . '.'. $ext;
+      // $file = 'http://localhost:8000/storage/img/' . $name . '.'. $ext;
 
       $user = Auth::user();
       $user -> img = $file;

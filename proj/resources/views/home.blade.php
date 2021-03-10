@@ -4,10 +4,12 @@
 
 <div class="container d-flex justify-content-center">
 
-  <div class="card" style="min-width: 50%;">
+  <div class="card" style="width: 50%;">
     <div class="p-3">
       @if (Auth::user()-> img)
-        <img class="card-img-top" src="{{ asset('storage/img/' . Auth::user() -> img) }}">
+        {{-- <img class="card-img-top" src="{{ asset('storage/img/' . Auth::user() -> img) }}"> --}}
+        {{-- <img class="card-img-top" src="{{ $user -> img}}"> --}}
+        <img class="card-img-top img-fluid max-width: 100%" src="http://localhost:8000/storage/img/{{ $user -> img}}">
       @endif
     </div>
     <div class="card-body">

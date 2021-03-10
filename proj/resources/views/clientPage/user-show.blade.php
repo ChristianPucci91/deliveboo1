@@ -5,10 +5,11 @@
 
   <div class="row">
     {{-- <h1>Ecco il nostro menu:</h1> --}}
-    <img src="{{ $user -> img}}" alt="" style="min-width: 100vw">
+    {{-- <img src="{{ $user -> img}}" alt="" style="min-width: 100vw"> --}}
+    <img src="http://localhost:8000/storage/img/{{ $user -> img}}" alt="" style="min-width: 100vw">
     @foreach ($user -> dishes as $dish)
       <div v-if="{{ $dish -> visible}} == 1" class="col-sm-6 mb-4">
-        <div class="card rounded bg-light">
+        <div class="card rounded bg-light animation">
           <div class="card-body">
             <h2 class="card-title text-center display-3"><em>{{$dish -> name}}</em></h2>
             <p class="card-text">Ingredienti: {{$dish -> ingredients}}</p>
