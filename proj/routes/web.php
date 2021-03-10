@@ -105,8 +105,10 @@ $gateway = new Braintree\Gateway([
 ]);
 
 $token = $gateway->ClientToken()->generate();
+$cartItems = \Cart::session('_token') -> getContent();
+// return view('clientPage.index-cart', compact('cartItems'));
 
-  return view('hosted', [
+  return view('hosted',compact('cartItems'), [
     'token' => $token
   ]);
 });
@@ -142,8 +144,12 @@ $result = $gateway->transaction()->sale([
 if ($result->success) {
     $transaction = $result->transaction;
     // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
-    return back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
-} else {
+    Cart::clear();
+    Cart::session('_token')->clear();
+
+    return redirect()->back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
+
+    } else {
     $errorString = "";
 
     foreach($result->errors->deepAll() as $error) {
