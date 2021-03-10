@@ -150,7 +150,7 @@ class HomeController extends Controller
     //// TEST UPLOAD IMG
     public function updateImg(Request $request) {
       $request -> validate([
-         'img' => 'required|file'
+         'img' => 'required|file|dimensions:ratio=16/9'
       ]);
 
       // $this -> deleteImg();

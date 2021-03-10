@@ -18,7 +18,7 @@
   <div class="container">
 
     <h2>La selezione di Booliveroo</h2>
-    <div class="row text-center row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+    <div class="row text-center row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 card-group">
 
       <div v-for="user in randUsers" class="col pb-1">
         <div class="card animation">
@@ -27,6 +27,9 @@
           <div class="card-body">
             <h5 class="card-title">@{{user.name}}</h5>
             <p class="card-text">@{{user.indirizzo}}.</p>
+            {{-- <a :href=`{{route('show-menu','')}}/${user.id}` class="btn btn-primary">Scopri il Menu</a> --}}
+          </div>
+          <div class="card-footer">
             <a :href=`{{route('show-menu','')}}/${user.id}` class="btn btn-primary">Scopri il Menu</a>
           </div>
         </div>

@@ -4,6 +4,15 @@
 
 <div class="container d-flex justify-content-center">
 
+  {{-- messaggi di ERRORE --}}
+      {{-- @if ($errors->any())
+          <div class="alert alert-danger" style="height: 45px;">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+          </div>
+      @endif --}}
+
   <div class="card" style="width: 50%;">
     <div class="p-3">
       @if (Auth::user()-> img)
@@ -23,6 +32,15 @@
           &#174;{{ $typology -> type}}
         @endforeach
       </p>
+
+
+      @if ($errors->any())
+          <div class="alert alert-danger d-flex justify-content-center align-items-center">
+            @foreach ($errors->all() as $error)
+                <p class="mb-0">{{ $error }}</p>
+            @endforeach
+          </div>
+      @endif
       {{-- inserimento immagine profilo --}}
       <form class="" action="{{ route('upload-img')}}" method="post"  enctype="multipart/form-data">
         @csrf
