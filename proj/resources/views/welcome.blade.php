@@ -18,9 +18,9 @@
   <div class="container">
 
     <h2>La selezione di Booliveroo</h2>
-    <div class="row text-center">
+    <div class="row text-center row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
 
-      <div v-for="user in randUsers" class="col-md-4 pb-1 pb-md-0">
+      <div v-for="user in randUsers" class="col pb-1">
         <div class="card">
           <img class="card-img-top" :src="user.img" alt="Not found image">
           <div class="card-body">
