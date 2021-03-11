@@ -6,7 +6,10 @@
     <h1 class="text-center display-4 mb-3"><em>ORDINI ricevuti:</em></h1>
 
     <div class="row">
-        @foreach ($user -> dishes as $dish)
+        {{-- @foreach ($user -> dishes as $dish)
+          @if ($dish->user_id == Auth::id())
+
+
             @foreach ($dish -> orders as $order)
                 <div class="col-sm-6 mb-4">
                     <div class="card">
@@ -31,6 +34,39 @@
                     </div>
                 </div>
             @endforeach
+
+          @endif
+        @endforeach --}}
+        @foreach ($user -> orders as $order)
+
+                <div class="col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="card-header text-center display-5 text-primary">
+                            Cliente: {{$order -> name}} {{$order -> lastname}}
+                        </div>
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Informazioni utili:</h5>
+                            <p class="card-text">
+                                <u><strong>Indirizzo:</strong></u> {{$order -> address}}
+                            </p>
+                            <p class="card-text">
+                                <u><strong>Mail:</strong></u> {{$order -> email}}
+                            </p>
+
+                            @foreach ($order -> dishes as $dish)
+                              {{$dish -> name}}
+                            @endforeach
+
+                            <p class="card-text">
+                                <u><strong>Totale ordine:</strong></u> {{$order -> price}}&euro;
+                            </p>
+                        </div>
+                        <div class="card-footer text-center text-primary">
+                            Data dell'ordine: {{$order -> created_at}}
+                        </div>
+                    </div>
+                </div>
+
         @endforeach
     </div>
 
