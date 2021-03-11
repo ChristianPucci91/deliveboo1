@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,9 +107,16 @@ $gateway = new Braintree\Gateway([
 
 $token = $gateway->ClientToken()->generate();
 
-  return view('hosted', [
+$cartItems = \Cart::session('_token') -> getContent();
+
+return view('hosted',compact('cartItems'), [
     'token' => $token
   ]);
+
+
+  // return view('hosted', [
+  //   'token' => $token
+  // ]);
 });
 
 Route::post('/checkout', function (Request $request){
@@ -125,6 +133,10 @@ $nonce = $request->payment_method_nonce;
 $firstName = $request->firstName;
 $lastName = $request->lastName;
 $email = $request->email;
+$address = $request->extendedAddress;
+$userId = $request->user_id;
+
+// dd($userId);
 
 $result = $gateway->transaction()->sale([
   'amount' => $amount,
@@ -142,7 +154,23 @@ $result = $gateway->transaction()->sale([
 if ($result->success) {
     $transaction = $result->transaction;
     // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
-    return back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
+    Cart::clear();
+    Cart::session('_token')->clear();
+
+    $newOrder = new Order;
+    $newOrder -> name = $firstName;
+    $newOrder -> lastname = $lastName;
+    $newOrder -> mobile = 10;
+    $newOrder -> address = $address;
+    $newOrder -> status = 1;
+    $newOrder -> price = $amount;
+    $newOrder -> save();
+
+    // dd($newOrder);
+
+    return redirect()->back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
+
+    // return back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
 } else {
     $errorString = "";
 

@@ -79,8 +79,8 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <a class="dropdown-item" href="{{ route('dish-index')}}">Vedi il menu</a>
                             <a class="dropdown-item" href="{{ route('home')}}">Profilo</a>
+                            <a class="dropdown-item" href="{{ route('dish-index')}}">Vedi il menu</a>
                             <a class="dropdown-item" href="{{route('order-index')}}">Mostrami gli ordini</a>
 
 
