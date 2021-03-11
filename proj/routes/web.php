@@ -107,9 +107,16 @@ $gateway = new Braintree\Gateway([
 
 $token = $gateway->ClientToken()->generate();
 
-  return view('hosted', [
+$cartItems = \Cart::session('_token') -> getContent();
+
+return view('hosted',compact('cartItems'), [
     'token' => $token
   ]);
+
+
+  // return view('hosted', [
+  //   'token' => $token
+  // ]);
 });
 
 Route::post('/checkout', function (Request $request){
@@ -127,6 +134,9 @@ $firstName = $request->firstName;
 $lastName = $request->lastName;
 $email = $request->email;
 $address = $request->extendedAddress;
+$userId = $request->user_id;
+
+// dd($userId);
 
 $result = $gateway->transaction()->sale([
   'amount' => $amount,
@@ -155,6 +165,8 @@ if ($result->success) {
     $newOrder -> status = 1;
     $newOrder -> price = $amount;
     $newOrder -> save();
+
+    // dd($newOrder);
 
     return redirect()->back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
 

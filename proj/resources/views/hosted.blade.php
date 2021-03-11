@@ -143,6 +143,26 @@
                       </div>
                   </div>
 
+                  {{-- prova --}}
+
+                  <div class="row d-none">
+                    <label for="amount">
+                        <span class="input-label">Amount</span>
+                        <div class="input-wrapper amount-wrapper">
+                            {{-- <input id="user_id" name="user_id" type="" value="" readonly>&euro; --}}
+                            {{-- {{\Cart::session('_token') -> getContent()}} --}}
+
+                            @foreach ($cartItems as $item)
+                              {{-- {{$item -> associatedModel -> user_id}} --}}
+                              <input id="user_id" name="user_id" type="" value="{{$item -> associatedModel -> user_id}}" readonly>&euro;
+                              @break
+                            @endforeach
+                        </div>
+                    </label>
+                  </div>
+
+                  {{-- fine prova --}}
+
                   <div class="row">
 
                     <div class="col-md-6">
