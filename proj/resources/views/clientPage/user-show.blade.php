@@ -3,24 +3,28 @@
 
 @section('contenuto-pagina')
 
-  <div class="row">
+<div class="container p-0 d-flex flex-column mb-5">
+
+  <img class="m-auto rounded" src="http://localhost:8000/storage/img/{{ $user -> img}}" alt="" style="width: 60%">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-5">
     {{-- <h1>Ecco il nostro menu:</h1> --}}
-    <img src="{{ $user -> img}}" alt="" style="min-width: 100vw">
+    {{-- <img src="{{ $user -> img}}" alt="" style="min-width: 100vw"> --}}
+    {{-- <img class="m-auto" src="http://localhost:8000/storage/img/{{ $user -> img}}" alt="" style="width: 60%"> --}}
     @foreach ($user -> dishes as $dish)
-      <div v-if="{{ $dish -> visible}} == 1" class="col-sm-6 mb-4">
-        <div class="card rounded bg-light">
+      <div v-if="{{ $dish -> visible}} == 1" class="col pr-0 pl-0 card-group">
+
+        <div class="card m-2" style="width: 18rem;">
           <div class="card-body">
-            <h2 class="card-title text-center display-3"><em>{{$dish -> name}}</em></h2>
-            <p class="card-text">Ingredienti: {{$dish -> ingredients}}</p>
-            {{-- <p class="card-text">Prezzo: {{$dish -> price / 100}}&euro;</p> --}}
-            <p class="card-text">Prezzo: {{$dish -> price}}&euro;</p>
-            {{-- <a v-if="{{ $dish -> visible}} == 1" href="{{ route('home')}}" class="btn btn-primary float-right"><i class="fas fa-shopping-cart"></i> Aggiungi al carrello</a> --}}
-            <a v-if="{{ $dish -> visible}} == 1" href="{{ route('cart.add', $dish->id)}}" class="btn btn-primary float-right"><i class="fas fa-shopping-cart"></i> Aggiungi al carrello</a>
+            <h5 class="card-title">{{$dish -> name}} <span class="text-muted">{{$dish -> price}}&euro;</span> </h5>
+            <p class="card-text">{{$dish -> ingredients}}</p>
+          </div>
+          <div class="card-footer text-center">
+            <a v-if="{{ $dish -> visible}} == 1" href="{{ route('cart.add', $dish->id)}}" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Aggiungi al carrello</a>
           </div>
         </div>
       </div>
     @endforeach
   </div>
 
-
+</div>
 @endsection

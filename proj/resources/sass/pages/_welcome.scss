@@ -10,13 +10,17 @@
   color: #000;
 }
 
-.card {
+.card{
+  color: #000;
+}
+
+.animation {
     margin-bottom: 35px;
     color: #000;
 
     &:hover{
       transform: scale(1.02);
-      transition: 0.25s;
+      transition: 0.30s;
     }
 }
 

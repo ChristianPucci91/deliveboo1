@@ -4,10 +4,21 @@
 
 <div class="container d-flex justify-content-center">
 
-  <div class="card" style="min-width: 50%;">
+  {{-- messaggi di ERRORE --}}
+      {{-- @if ($errors->any())
+          <div class="alert alert-danger" style="height: 45px;">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+          </div>
+      @endif --}}
+
+  <div class="card" style="width: 50%;">
     <div class="p-3">
       @if (Auth::user()-> img)
-        <img class="card-img-top" src="{{ asset('storage/img/' . Auth::user() -> img) }}">
+        {{-- <img class="card-img-top" src="{{ asset('storage/img/' . Auth::user() -> img) }}"> --}}
+        {{-- <img class="card-img-top" src="{{ $user -> img}}"> --}}
+        <img class="card-img-top img-fluid max-width: 100%" src="http://localhost:8000/storage/img/{{ $user -> img}}">
       @endif
     </div>
     <div class="card-body">
@@ -21,6 +32,15 @@
           &#174;{{ $typology -> type}}
         @endforeach
       </p>
+
+
+      @if ($errors->any())
+          <div class="alert alert-danger d-flex justify-content-center align-items-center">
+            @foreach ($errors->all() as $error)
+                <p class="mb-0">{{ $error }}</p>
+            @endforeach
+          </div>
+      @endif
       {{-- inserimento immagine profilo --}}
       <form class="" action="{{ route('upload-img')}}" method="post"  enctype="multipart/form-data">
         @csrf

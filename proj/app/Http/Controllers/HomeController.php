@@ -150,16 +150,17 @@ class HomeController extends Controller
     //// TEST UPLOAD IMG
     public function updateImg(Request $request) {
       $request -> validate([
-         'img' => 'required|file'
+         'img' => 'required|file|dimensions:ratio=16/9'
       ]);
 
-      $this -> deleteImg();
+      // $this -> deleteImg();
 
       $image = $request -> file('img');
 
       $ext = $image -> getClientOriginalExtension();
       $name = rand(100000,999999). '_' . time();
       $file = $name . '.'. $ext;
+      // $file = 'http://localhost:8000/storage/img/' . $name . '.'. $ext;
 
       $user = Auth::user();
       $user -> img = $file;

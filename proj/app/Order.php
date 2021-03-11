@@ -9,11 +9,18 @@ class Order extends Model
   protected $fillable = [
     'name',
     'lastname',
-    'mobile',
+    'email',
     'status',
     'address',
     'price'
   ];
+
+  // relazione one to one
+  public function user(){
+
+   return $this -> belongsTo(User::class);
+
+  }
 
   // relazione many to many
   public function dishes() {

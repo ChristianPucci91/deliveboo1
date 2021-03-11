@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Order;
+use App\Dish;
+// use App\Dish_Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,9 +109,16 @@ $gateway = new Braintree\Gateway([
 
 $token = $gateway->ClientToken()->generate();
 
-  return view('hosted', [
+$cartItems = \Cart::session('_token') -> getContent();
+
+return view('hosted',compact('cartItems'), [
     'token' => $token
   ]);
+
+
+  // return view('hosted', [
+  //   'token' => $token
+  // ]);
 });
 
 Route::post('/checkout', function (Request $request){
@@ -125,6 +135,11 @@ $nonce = $request->payment_method_nonce;
 $firstName = $request->firstName;
 $lastName = $request->lastName;
 $email = $request->email;
+$address = $request->extendedAddress;
+$userId = $request->user_id;
+$dishId = $request->dish_id;
+
+// dd($userId);
 
 $result = $gateway->transaction()->sale([
   'amount' => $amount,
@@ -141,8 +156,30 @@ $result = $gateway->transaction()->sale([
 
 if ($result->success) {
     $transaction = $result->transaction;
-    // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
-    return back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
+    Cart::clear();
+    Cart::session('_token')->clear();
+
+    $newOrder = new Order;
+    $newOrder -> user_id = $userId;
+    $newOrder -> name = $firstName;
+    $newOrder -> lastname = $lastName;
+    $newOrder -> email = $email;
+    $newOrder -> address = $address;
+    $newOrder -> status = 1;
+    $newOrder -> price = $amount;
+    $newOrder -> save();
+
+    // $orderId = $newOrder -> id;
+    // $newOrder->dishes()->sync($dishId);
+
+    // $dishes = Dish::inRandomOrder() -> limit(rand(1,5)) -> get(); //creiamo una collezione da 1 a 5 elementi
+    // $order -> dishes() -> attach($dishes);
+
+    // dd($newOrder);
+
+
+    return redirect()->back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
+
 } else {
     $errorString = "";
 
@@ -150,8 +187,6 @@ if ($result->success) {
         $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
     }
 
-    // $_SESSION["errors"] = $errorString;
-    // header("Location: " . $baseUrl . "index.php");
       return back()->withErrors('An error occured with the message: ' . $result->message);
 }
 });

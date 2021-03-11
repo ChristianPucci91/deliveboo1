@@ -10953,13 +10953,17 @@ a.text-dark:focus {
 }
 
 .card {
+  color: #000;
+}
+
+.animation {
   margin-bottom: 35px;
   color: #000;
 }
 
-.card:hover {
+.animation:hover {
   transform: scale(1.02);
-  transition: 0.25s;
+  transition: 0.3s;
 }
 
 th,
@@ -10984,6 +10988,11 @@ body {
 
 header {
   height: 80px;
+}
+
+header .navbar {
+  background-image: url("http://localhost:8000/storage/logos/navbar.jpg");
+  background-size: cover;
 }
 
 .container1 {
