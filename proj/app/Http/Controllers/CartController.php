@@ -16,8 +16,13 @@ class CartController extends Controller
             'price' => $dish->price,
             'quantity' => 1,
             'attributes' => array(),
+            'user_id' => $dish->user_id,
             'associatedModel' => $dish
         ));
+
+        // $user = $dish->user_id;
+        // dd($user);
+
         return back();
     }
     public function index()

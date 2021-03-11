@@ -7,6 +7,9 @@
 
     <div class="row">
         @foreach ($user -> dishes as $dish)
+          @if ($dish->user_id == Auth::id())
+
+
             @foreach ($dish -> orders as $order)
                 <div class="col-sm-6 mb-4">
                     <div class="card">
@@ -31,6 +34,8 @@
                     </div>
                 </div>
             @endforeach
+
+          @endif
         @endforeach
     </div>
 
