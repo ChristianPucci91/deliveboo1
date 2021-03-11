@@ -14,6 +14,15 @@ class AddForeignKeys extends Migration
     public function up()
     {
 
+      Schema::table('orders', function (Blueprint $table) {
+
+          // specifico associazione fk e tabella dishes
+          $table -> foreign('user_id' , 'user-orders')
+          -> references('id')
+          -> on('users');
+
+      });
+
       Schema::table('dishes', function (Blueprint $table) {
 
           // specifico associazione fk e tabella dishes
@@ -76,6 +85,12 @@ class AddForeignKeys extends Migration
       Schema::table('dishes', function (Blueprint $table) {
 
        $table -> dropForeign('user-dishes');
+
+      });
+
+      Schema::table('orders', function (Blueprint $table) {
+
+       $table -> dropForeign('user-orders');
 
       });
 
