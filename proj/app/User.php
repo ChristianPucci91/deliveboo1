@@ -42,6 +42,14 @@ class User extends Authenticatable
      return $this -> hasMany(Dish::class);
 
     }
+
+    // relazione one to many
+    public function orders() {
+
+      return $this -> hasMany(Order::class);
+
+    }
+
     // relazione many to many
 
     public function typologies() {

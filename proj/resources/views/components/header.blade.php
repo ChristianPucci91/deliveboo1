@@ -40,15 +40,22 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <a href="{{route('cart.index')}}" class="nav-link"><i class="fas fa-shopping-cart"></i>
+                {{-- <a href="{{route('cart.index')}}" class="nav-link"><i class="fas fa-shopping-cart"></i>
 
                     <div class="badge">
                         {{Cart::session('_token') -> getTotalQuantity()}}
                     </div>
 
-                </a>
+                </a> --}}
                 <!-- Authentication Links -->
                 @guest
+                    <a href="{{route('cart.index')}}" class="nav-link"><i class="fas fa-shopping-cart"></i>
+
+                        <div class="badge">
+                            {{Cart::session('_token') -> getTotalQuantity()}}
+                        </div>
+
+                    </a>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>

@@ -158,8 +158,19 @@
                               @break
                             @endforeach
                         </div>
+
+                    </label>
+
+                    <label for="dishes[]">
+                      @foreach ($cartItems as $item)
+                        <input id="dish_id" type="" name="dish_id[]" value="{{$item -> associatedModel -> dish_id}}">
+                      @endforeach
                     </label>
                   </div>
+
+                  {{-- @foreach ($cartItems as $item)
+                    <input id="dish_id" type="" name="dish_id" value="{{$item -> associatedModel -> dish_id}}">
+                  @endforeach --}}
 
                   {{-- fine prova --}}
 
