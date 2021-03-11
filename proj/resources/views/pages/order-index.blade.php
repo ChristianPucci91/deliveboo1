@@ -33,5 +33,17 @@
             @endforeach
         @endforeach
     </div>
+    
+    {{-- <h1>Orders Chart</h1>
+    <div id="chart" style="height: 300px;"></div>
+
+    @push('js')
+    <script>
+        const orderChart = new Chartisan({
+          el: '#chart',
+          url: "@chart('order_chart')",
+        });
+      </script>
+    @endpush --}}
 
 @endsection
