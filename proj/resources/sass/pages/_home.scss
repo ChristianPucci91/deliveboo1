@@ -1,10 +1,15 @@
-.register{
+.home{
   .card{
     background-color: #FEEEBC;
     border: none;
 
     .btn{
       font-size: 20px;
+    }
+
+    .form-control{
+      max-width: 280px;
+      background-color: #FEEEBC;
     }
 
   }

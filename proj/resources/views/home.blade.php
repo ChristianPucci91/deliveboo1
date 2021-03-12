@@ -2,7 +2,7 @@
 
 @section('contenuto-pagina')
 
-<div class="container d-flex justify-content-center">
+<div class="container home d-flex justify-content-center">
 
   {{-- messaggi di ERRORE --}}
       {{-- @if ($errors->any())
@@ -13,7 +13,7 @@
           </div>
       @endif --}}
 
-  <div class="card" style="width: 50%;">
+  <div class="card mb-5 mt-4" style="width: 50%;">
     <div class="p-3">
       @if (Auth::user()-> img)
         {{-- <img class="card-img-top" src="{{ asset('storage/img/' . Auth::user() -> img) }}"> --}}
@@ -48,9 +48,9 @@
 
         <input type="file" class="form-control border-0 p-0" name="img" value="">
         {{-- contenitore bottoni --}}
-        <div class="d-flex">
-          <input type="submit" class=" mr-1 btn btn-primary" name="" value="Update">
-          <a href="{{ route('clear-img')}}" class=" ml-1 btn btn-danger">Delete</a>
+        <div class="d-flex justify-content-center">
+          <input type="submit" class=" mr-1 btn bg-dark text-white px-5" name="" value="Update">
+          {{-- <a href="{{ route('clear-img')}}" class=" ml-1 btn btn-danger">Delete</a> --}}
         </div>
 
       </form>
