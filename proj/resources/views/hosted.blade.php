@@ -119,9 +119,7 @@
                   <label for="amount">
                       <span class="input-label">Amount</span>
                       <div class="input-wrapper amount-wrapper">
-
-                        <input id="amount" name="amount" type="tel" value="{{\Cart::session('_token')->getTotal()}}" readonly>&euro;
-
+                          <input id="amount" name="amount" type="tel" value="{{\Cart::session('_token')->getTotal()}}" readonly>&euro;
                       </div>
                   </label>
                   <div class="d-block my-3">
@@ -144,6 +142,44 @@
                           <div class="invalid-feedback"> Name on card is required </div>
                       </div>
                   </div>
+
+                  {{-- prova --}}
+
+                  <div class="row d-none">
+                    <label for="amount">
+                        <span class="input-label">Amount</span>
+                        <div class="input-wrapper amount-wrapper">
+                            {{-- <input id="user_id" name="user_id" type="" value="" readonly>&euro; --}}
+                            {{-- {{\Cart::session('_token') -> getContent()}} --}}
+
+                            @foreach ($cartItems as $item)
+                              {{-- {{$item -> associatedModel -> user_id}} --}}
+                              <input id="user_id" name="user_id" type="" value="{{$item -> associatedModel -> user_id}}" readonly>&euro;
+                              @break
+                            @endforeach
+                        </div>
+
+                    </label>
+
+                    <label for="dishes[]">
+                      @foreach ($cartItems as $item)
+                        <input id="dish_id" type="" name="dishes[]" value="{{$item -> id}}">
+                      @endforeach
+                    </label>
+                  </div>
+
+                  {{-- <label for="dishes[]">
+                    @foreach ($cartItems as $item)
+                      <input id="dish_id" type="" name="dishes[]" value="{{$item -> associatedModel -> dish_id}}">
+                      {{$item -> id}}
+                    @endforeach
+                  </label> --}}
+
+                  {{-- @foreach ($cartItems as $item)
+                    <input id="dish_id" type="" name="dish_id" value="{{$item -> associatedModel -> dish_id}}">
+                  @endforeach --}}
+
+                  {{-- fine prova --}}
 
                   <div class="row">
 

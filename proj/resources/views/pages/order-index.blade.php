@@ -2,14 +2,17 @@
 
 @section('contenuto-pagina')
 
+  <div class="container">
+
     <a href="{{route('home')}}" class="btn btn-primary mb-2">Torna alla home</a>
     <h1 class="text-center display-4 mb-3"><em>ORDINI ricevuti:</em></h1>
 
-    <div class="row">
-        @foreach ($user -> dishes as $dish)
-            @foreach ($dish -> orders as $order)
-                <div class="col-sm-6 mb-4">
-                    <div class="card">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
+
+        @foreach ($user -> orders as $order)
+
+                <div class="col mb-4 card-group">
+                    <div class="card" style="min-width: 30vw">
                         <div class="card-header text-center display-5 text-primary">
                             Cliente: {{$order -> name}} {{$order -> lastname}}
                         </div>
@@ -19,8 +22,15 @@
                                 <u><strong>Indirizzo:</strong></u> {{$order -> address}}
                             </p>
                             <p class="card-text">
-                                <u><strong>Telefono:</strong></u> {{$order -> mobile}}
+                                <u><strong>Mail:</strong></u> {{$order -> email}}
                             </p>
+
+                            <u><strong>Piatti Ordinati:</strong></u>
+
+                              @foreach ($order -> dishes as $dish)
+                                <p>{{$dish -> name}} {{$dish -> price}}&euro;</p>
+                              @endforeach
+
                             <p class="card-text">
                                 <u><strong>Totale ordine:</strong></u> {{$order -> price}}&euro;
                             </p>
@@ -30,8 +40,10 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+
         @endforeach
     </div>
+
+  </div>
 
 @endsection

@@ -3,17 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Order;
+use App\Dish;
 
 // rotta per pagina Welcome
 Route::get('/', function () {
@@ -108,9 +99,12 @@ $token = $gateway->ClientToken()->generate();
 $cartItems = \Cart::session('_token') -> getContent();
 // return view('clientPage.index-cart', compact('cartItems'));
 
-  return view('hosted',compact('cartItems'), [
+$cartItems = \Cart::session('_token') -> getContent();
+
+return view('hosted',compact('cartItems'), [
     'token' => $token
   ]);
+
 });
 
 Route::post('/checkout', function (Request $request){
@@ -127,6 +121,8 @@ $nonce = $request->payment_method_nonce;
 $firstName = $request->firstName;
 $lastName = $request->lastName;
 $email = $request->email;
+$address = $request->extendedAddress;
+$userId = $request->user_id;
 
 $result = $gateway->transaction()->sale([
   'amount' => $amount,
@@ -143,21 +139,32 @@ $result = $gateway->transaction()->sale([
 
 if ($result->success) {
     $transaction = $result->transaction;
-    // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
     Cart::clear();
     Cart::session('_token')->clear();
 
+    $newOrder = new Order;
+    $newOrder -> user_id = $userId;
+    $newOrder -> name = $firstName;
+    $newOrder -> lastname = $lastName;
+    $newOrder -> email = $email;
+    $newOrder -> address = $address;
+    $newOrder -> status = 1;
+    $newOrder -> price = $amount;
+    $newOrder -> save();
+
+
+    $newOrder->dishes()->attach($request['dishes']);
+    $newOrder->save();
+
     return redirect()->back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
 
-    } else {
+} else {
     $errorString = "";
 
     foreach($result->errors->deepAll() as $error) {
         $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
     }
 
-    // $_SESSION["errors"] = $errorString;
-    // header("Location: " . $baseUrl . "index.php");
       return back()->withErrors('An error occured with the message: ' . $result->message);
 }
 });

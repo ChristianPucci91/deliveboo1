@@ -1,3 +1,8 @@
 header {
     height: 80px;
+
+    .navbar{
+      background-image: url('http://localhost:8000/storage/logos/navbar.jpg');
+      background-size: cover;
+    }
 }

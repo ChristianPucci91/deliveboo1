@@ -2,8 +2,8 @@
 @section('contenuto-pagina')
 
 {{-- <div class="container1"> --}}
-  
-  <div class="container vh-80 mb-5 .mt-4" id="grand"> 
+
+  <div class="container vh-80 mb-5 .mt-4" id="grand">
 
     {{-- Back to Typologies button --}}
     <div v-if="showUser" @click="showUser = !showUser">
@@ -17,7 +17,7 @@
           {{-- colonna --}}
           <div class="col mb-4" v-for="typology in allTypologies" style="width: 18rem;" v-if="!showUser">
             {{-- card tipologia --}}
-            <div class="card text-center h-100">
+            <div class="card text-center h-100 animation">
             {{-- <div class="card text-center h-100" :class="(typology.visibile ? 'border-success' : '')" @click="getRestaurant(typology.id), typology.visibile = !typology.visibile"> --}}
               {{-- logo tipologia --}}
               <img class="card-img-top" :src="typology.logo" alt="Card image cap">
@@ -35,7 +35,7 @@
           </div>
 
         </div> {{-- se cancello sto div e lo metto in fondo il footer si aggiusta ma si rompe il resto --}}
-        
+
         {{-- restaurant container --}}
         <a v-if="showUser" class="card" id="restcard" v-for="user in userArray" :href=`{{route('show-menu','')}}/${user.id}`>
             <div class="card-body" id="user-name">

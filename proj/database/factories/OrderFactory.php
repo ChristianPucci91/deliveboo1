@@ -13,7 +13,7 @@ $factory->define(Order::class, function (Faker $faker) {
 
         'name' => $faker -> firstName,
         'lastname' => $faker -> lastName,
-        'mobile' => rand(1,20),
+        'email' => $faker->unique()->safeEmail,
         'address' => $faker -> address,
         'status' => $faker -> boolean,
         'price' => rand(1,20),
