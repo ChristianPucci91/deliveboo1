@@ -163,10 +163,17 @@
 
                     <label for="dishes[]">
                       @foreach ($cartItems as $item)
-                        <input id="dish_id" type="" name="dish_id[]" value="{{$item -> associatedModel -> dish_id}}">
+                        <input id="dish_id" type="" name="dishes[]" value="{{$item -> id}}">
                       @endforeach
                     </label>
                   </div>
+
+                  {{-- <label for="dishes[]">
+                    @foreach ($cartItems as $item)
+                      <input id="dish_id" type="" name="dishes[]" value="{{$item -> associatedModel -> dish_id}}">
+                      {{$item -> id}}
+                    @endforeach
+                  </label> --}}
 
                   {{-- @foreach ($cartItems as $item)
                     <input id="dish_id" type="" name="dish_id" value="{{$item -> associatedModel -> dish_id}}">

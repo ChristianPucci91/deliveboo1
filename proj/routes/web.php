@@ -5,18 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Order;
 use App\Dish;
-// use App\Dish_Order;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 // rotta per pagina Welcome
 Route::get('/', function () {
@@ -115,10 +103,6 @@ return view('hosted',compact('cartItems'), [
     'token' => $token
   ]);
 
-
-  // return view('hosted', [
-  //   'token' => $token
-  // ]);
 });
 
 Route::post('/checkout', function (Request $request){
@@ -137,9 +121,6 @@ $lastName = $request->lastName;
 $email = $request->email;
 $address = $request->extendedAddress;
 $userId = $request->user_id;
-$dishId = $request->dish_id;
-
-// dd($userId);
 
 $result = $gateway->transaction()->sale([
   'amount' => $amount,
@@ -169,14 +150,9 @@ if ($result->success) {
     $newOrder -> price = $amount;
     $newOrder -> save();
 
-    // $orderId = $newOrder -> id;
-    // $newOrder->dishes()->sync($dishId);
 
-    // $dishes = Dish::inRandomOrder() -> limit(rand(1,5)) -> get(); //creiamo una collezione da 1 a 5 elementi
-    // $order -> dishes() -> attach($dishes);
-
-    // dd($newOrder);
-
+    $newOrder->dishes()->attach($request['dishes']);
+    $newOrder->save();
 
     return redirect()->back()->with('success_message', 'Transaction succesful. The Id is :' . $transaction->id);
 
