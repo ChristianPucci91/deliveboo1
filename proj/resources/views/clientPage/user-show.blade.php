@@ -5,11 +5,11 @@
 
 <div class="container p-0 d-flex flex-column mb-5">
 
-  <img class="m-auto rounded" src="http://localhost:8000/storage/img/{{ $user -> img}}" alt="" style="width: 60%">
+  <img class="m-auto rounded" src="http://localhost:8000/storage/img/{{$user -> img}}" alt="" style="width: 60%">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-5">
     {{-- <h1>Ecco il nostro menu:</h1> --}}
     {{-- <img src="{{ $user -> img}}" alt="" style="min-width: 100vw"> --}}
-    {{-- <img class="m-auto" src="http://localhost:8000/storage/img/{{ $user -> img}}" alt="" style="width: 60%"> --}}
+    {{-- <img class="m-auto" src="http://localhost:8000/storage/img/%7B%7B $user -> img}}" alt="" style="width: 60%"> --}}
     @foreach ($user -> dishes as $dish)
       <div v-if="{{ $dish -> visible}} == 1" class="col pr-0 pl-0 card-group">
 
@@ -26,8 +26,13 @@
     @endforeach
   </div>
 
+</div>
+@endsection
+
+  {{-- <script src="{{asset('js/app.js')}}"></script> --}}
+
   {{-- @import ('vue/dist/vue.min.js')
-    <script src="{{asset('js/app.js')}}"></script>
+
     <script>
     (function($){
       window.onbeforeunload = function(e){
@@ -44,4 +49,3 @@
       $.maintainscroll();
       })(jQuery);
     </script> --}}
-@endsection

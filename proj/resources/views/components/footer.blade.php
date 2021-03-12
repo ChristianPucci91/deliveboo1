@@ -7,34 +7,34 @@
         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
           ><i class="fab fa-facebook-f"></i
         ></a>
-  
+
         <!-- Twitter -->
         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
           ><i class="fab fa-twitter"></i
         ></a>
-  
+
         <!-- Google -->
         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
           ><i class="fab fa-google"></i
         ></a>
-  
+
         <!-- Instagram -->
         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
           ><i class="fab fa-instagram"></i
         ></a>
-  
+
         <!-- Linkedin -->
         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
           ><i class="fab fa-linkedin-in"></i
         ></a>
-  
+
         <!-- Github -->
         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
           ><i class="fab fa-github"></i
         ></a>
       </section>
       <!-- Section: Social media -->
-  
+
       <!-- Section: Form -->
       <section class="">
         <form action="">
@@ -47,7 +47,7 @@
         </form>
       </section>
       <!-- Section: Form -->
-  
+
       <!-- Section: Text -->
       <section class="mb-4">
         <p>
@@ -57,7 +57,7 @@
         </p>
       </section>
       <!-- Section: Text -->
-  
+
       <!-- Section: Links -->
       <section class="">
         <!--Grid row-->
@@ -65,7 +65,7 @@
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
             <h5 class="text-uppercase">GITHUB</h5>
-  
+
             <ul class="list-unstyled mb-0">
             <li>
                 <a href="https://github.com/AdrianaMargiotta-git" class="text-white">Adriana Maria Margiotta</a>
@@ -85,7 +85,7 @@
             </ul>
           </div>
           <!--Grid column-->
-  
+
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
             <h5 class="text-uppercase">GET IN TOUCH</h5>
@@ -97,11 +97,11 @@
             </address>
           </div>
           <!--Grid column-->
-  
+
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
             <h5 class="text-uppercase">Links</h5>
-  
+
             <ul class="list-unstyled mb-0">
               <li>
                 <a href="#!" class="text-white">Link 1</a>
@@ -118,11 +118,11 @@
             </ul>
           </div>
           <!--Grid column-->
-  
+
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
             <h5 class="text-uppercase">Links</h5>
-  
+
             <ul class="list-unstyled mb-0">
               <li>
                 <a href="#!" class="text-white">Link 1</a>
@@ -145,7 +145,7 @@
       <!-- Section: Links -->
     </div>
     <!-- Grid container -->
-  
+
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2020 Copyright:
