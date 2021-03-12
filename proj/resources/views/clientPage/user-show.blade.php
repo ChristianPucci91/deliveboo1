@@ -3,7 +3,9 @@
 
 @section('contenuto-pagina')
 
-<div class="container p-0 d-flex flex-column mb-5">
+<div class="container p-0 d-flex flex-column mb-5 user-show">
+
+  <h1 class="mx-auto mb-3">{{$user -> name}}</h1>
 
   <img class="m-auto rounded" src="http://localhost:8000/storage/img/{{ $user -> img}}" alt="" style="width: 60%">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-5">
@@ -18,8 +20,8 @@
             <h5 class="card-title">{{$dish -> name}} <span class="text-muted">{{$dish -> price}}&euro;</span> </h5>
             <p class="card-text">{{$dish -> ingredients}}</p>
           </div>
-          <div class="card-footer text-center">
-            <a v-if="{{ $dish -> visible}} == 1" href="{{ route('cart.add', $dish->id)}}" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Aggiungi al carrello</a>
+          <div class="card-footer text-center bg-dark">
+            <a v-if="{{ $dish -> visible}} == 1" href="{{ route('cart.add', $dish->id)}}" class="btn"><span><i class="fas fa-shopping-cart"></i> Aggiungi al carrello</span></a>
           </div>
         </div>
       </div>
@@ -27,4 +29,5 @@
   </div>
 
 </div>
+
 @endsection
