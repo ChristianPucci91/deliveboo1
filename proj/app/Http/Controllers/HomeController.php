@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 use App\Order;
 use App\User;
 use App\Dish;
 use App\Typology;
+// use App\DB;
 
 class HomeController extends Controller
 {
@@ -144,7 +146,21 @@ class HomeController extends Controller
     public function orderIndex(){
       $user = Auth::user();
       $orders = Order::all();
-      return view('pages.order-index',compact('orders', 'user'));
+      
+      $chart_gen=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 01)->count();
+      $chart_feb=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 02)->count();
+      $chart_mar=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 03)->count();
+      $chart_apr=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 04)->count();
+      $chart_mag=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 05)->count();
+      $chart_giu=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 06)->count();
+      $chart_lug=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 07)->count();
+      $chart_ago=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 8)->count();
+      $chart_set=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 9)->count();
+      $chart_ott=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 10)->count();
+      $chart_nov=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 11)->count();
+      $chart_dic=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 12)->count();
+      // dd($chart_marzo);
+      return view('pages.order-index',compact('orders', 'user', 'chart_gen', 'chart_feb', 'chart_mar', 'chart_apr', 'chart_mag', 'chart_giu', 'chart_lug', 'chart_ago', 'chart_set', 'chart_ott', 'chart_nov', 'chart_dic'));
     }
 
     //// TEST UPLOAD IMG
