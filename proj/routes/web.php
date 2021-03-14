@@ -96,6 +96,8 @@ $gateway = new Braintree\Gateway([
 ]);
 
 $token = $gateway->ClientToken()->generate();
+$cartItems = \Cart::session('_token') -> getContent();
+// return view('clientPage.index-cart', compact('cartItems'));
 
 $cartItems = \Cart::session('_token') -> getContent();
 
