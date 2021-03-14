@@ -13,11 +13,12 @@
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
       @foreach ($user -> dishes as $dish)
         <div class="col mb-4 card-group">
-          @if ($dish->visible === 1)
+          {{-- @if ($dish->visible === 1)
             <div class="card">
           @else
             <div class="card">
-          @endif
+          @endif --}}
+          <div class="card">
 
               <div class="card-header text-center text-uppercase text-white bg-dark">
                 {{$dish -> name}}

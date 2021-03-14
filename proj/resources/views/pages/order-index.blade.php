@@ -1,6 +1,6 @@
 @extends('layouts.main-layout')
 
-@section('contenuto-pagina')
+@section('chart')
 
   <div class="container order-index text-center">
 
@@ -12,24 +12,28 @@
         @foreach ($user -> orders as $order)
 
                 <div class="col mb-4 card-group">
-                    <div class="card" style="min-width: 30vw">
-                        <div class="card-header text-center display-5 text-white bg-dark">
+                    <div class="card">
+                        <div class="card-header text-center text-white bg-dark">
                             Cliente: {{$order -> name}} {{$order -> lastname}}
                         </div>
                         <div class="card-body text-dark text-left">
                             <h5 class="card-title text-center">Informazioni utili:</h5>
+
                             <p class="card-text">
                                 <u><strong>Indirizzo:</strong></u> {{$order -> address}}
                             </p>
+
                             <p class="card-text">
                                 <u><strong>Mail:</strong></u> {{$order -> email}}
                             </p>
 
-                            <u><strong>Piatti Ordinati:</strong></u>
+                            <p>
+                              <u><strong>Piatti Ordinati:</strong></u>
+                            </p>
 
-                              @foreach ($order -> dishes as $dish)
-                                <p>{{$dish -> name}} {{$dish -> price}}&euro;</p>
-                              @endforeach
+                            @foreach ($order -> dishes as $dish)
+                              <p>{{$dish -> name}} {{$dish -> price}}&euro;</p>
+                            @endforeach
 
                             <p class="card-text">
                                 <u><strong>Totale ordine:</strong></u> {{$order -> price}}&euro;
@@ -58,10 +62,9 @@
 
   </div>
 
-@endsection
 
-@section('chart')
-    <div class="container mb-3 bg-white" id="app">
+    {{-- grafico --}}
+    <div class="container mb-3 bg-white">
         <canvas id="myChart"></canvas>
     </div>
 
