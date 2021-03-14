@@ -14,7 +14,7 @@
          </span>
       @enderror
     <label for="ingredients">Ingredients</label>
-    <input type="text" name="ingredients" value="{{ $dish -> ingredients}}" class="form-control mb-3 @error('ingredients') is-invalid @enderror">
+    <textarea  type="text" name="ingredients" value="{{ $dish -> ingredients}}" class="form-control mb-3 @error('ingredients') is-invalid @enderror">{{ $dish -> ingredients}}</textarea>
       @error('ingredients')
          <span class="invalid-feedback" role="alert">
              <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
 
     </div>
 
-    <input type="submit" name="" value="salva" class="btn btn-primary mt-3">
+    <input type="submit" name="" value="salva" class="btn btn-success mt-3 mb-4">
 
   </form>
 
