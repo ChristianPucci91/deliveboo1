@@ -47,3 +47,47 @@
   </div>
 
 @endsection
+
+@section('chart')
+    <div class="container mb-3 bg-white" id="app">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+        let masPopChart = new Chart(myChart, {
+            // The type of chart we want to create
+            type: 'bar',
+
+            // The data for our dataset
+            data: {
+                labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', ' Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
+                datasets: [{
+                    label: 'Ordini per mese',
+                    backgroundColor: '#FEEEBC',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [
+                        {{$chart_gen}},
+                        {{$chart_feb}},
+                        {{$chart_mar}},
+                        {{$chart_apr}},
+                        {{$chart_mag}},
+                        {{$chart_giu}},
+                        {{$chart_lug}},
+                        {{$chart_ago}},
+                        {{$chart_set}},
+                        {{$chart_ott}},
+                        {{$chart_nov}},
+                        {{$chart_dic}}
+
+                    ]
+                }]
+            },
+
+            // Configuration options go here
+            options: { }
+        });
+    </script>
+@endsection
