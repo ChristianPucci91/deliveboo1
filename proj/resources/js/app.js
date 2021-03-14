@@ -62,6 +62,8 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
          }
      }
 
+     
+
    });
 }
 document.addEventListener("DOMContentLoaded",init);
