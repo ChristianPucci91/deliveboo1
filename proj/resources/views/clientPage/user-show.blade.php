@@ -29,10 +29,7 @@
 </div>
 @endsection
 
-  {{-- <script src="{{asset('js/app.js')}}"></script> --}}
-
-  {{-- @import ('vue/dist/vue.min.js')
-
+  @section('script')
     <script>
     (function($){
       window.onbeforeunload = function(e){
@@ -48,4 +45,6 @@
       };
       $.maintainscroll();
       })(jQuery);
-    </script> --}}
+    </script>
+
+  @endsection
