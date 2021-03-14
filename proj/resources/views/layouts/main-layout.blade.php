@@ -16,6 +16,7 @@
     <div id="app">
         @yield('contenuto-pagina')
     </div>
+    @yield('chart')
       <!-- contenuto pagina -->
       {{-- @yield('test') --}}
     {{-- </div> --}}
@@ -28,15 +29,7 @@
 
     <script src="{{asset('js/app.js')}}"></script>
 
-    @stack('modals')
-    {{-- @livewireScripts --}}
-
-    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
-    <!-- Chartisan -->
-    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
-
-    @stack('js')
-    
+    <script src="{{asset('js/app.js')}}"></script>
 
   </body>
 </html>

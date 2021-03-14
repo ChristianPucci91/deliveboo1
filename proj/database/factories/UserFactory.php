@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->randomElement($array = array (
-          'Osteria da Pino','Ristorante La Bussola','Pizzeria da Gianni','Uliveto','Rosa dei venti','Sakura','Burger King','Da Alfredo','Old Wild West','Mc Donalds')),
+          'Riviera Wave','Kashmir Gala','Bella Cucina','Food Delight','Frasca Food & Wine','Yum!','Krusty Krab','Nacho Daddy','The Tipsy Cow','Backyard Bowl')),
         // 'img' => $faker->randomElement($array = array ( 'https://media-cdn.tripadvisor.com/media/photo-s/1a/16/32/e3/wine-room-dari-ristorante.jpg','https://www.aprireazienda.com/wp-content/uploads/2019/11/aprire-un-ristorante-giapponese-1024x683.jpg')),
         // 'img' => $faker->randomElement($array = array ("http://localhost:8000/storage/img/default-logo.png")),
         'img' => $faker->randomElement($array = array ("default-logo.jpg")),

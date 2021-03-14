@@ -10948,12 +10948,108 @@ a.text-dark:focus {
   }
 }
 
-.jumbotron {
-  color: #000;
+th,
+td {
+  color: #fff;
 }
 
-.card {
-  color: #000;
+.welcome .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.welcome h2 {
+  margin-bottom: 20px;
+}
+
+.welcome .row .btn {
+  color: #FFF;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.welcome .row .btn span {
+  transition: all 0.3s;
+}
+
+.welcome .row .btn::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0.1, 1);
+}
+
+.welcome .row .btn:hover span {
+  letter-spacing: 2px;
+}
+
+.welcome .row .btn:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.welcome .row .btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.welcome .row .btn:hover::after {
+  opacity: 0;
+  transform: scale(0.1, 1);
+}
+
+.jumbotron {
+  background-image: url("http://localhost:8000/storage/logos/jumbotron.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+}
+
+.jumbotron .btn {
+  display: inline-block;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  color: rgba(223, 190, 106, 0.7);
+  border-radius: 0;
+  padding: 18px 80px 20px;
+  transition: all 0.7s ease-out;
+  background: linear-gradient(270deg, rgba(223, 190, 106, 0.8), rgba(146, 111, 52, 0.8), rgba(34, 34, 34, 0), rgba(34, 34, 34, 0));
+  background-position: 1% 50%;
+  background-size: 300% 300%;
+  text-decoration: none;
+  margin: 0.625rem;
+  border: none;
+  border: 1px solid rgba(223, 190, 106, 0.3);
+}
+
+.jumbotron .btn:hover {
+  color: #fff;
+  border: 1px solid rgba(223, 190, 106, 0);
+  color: #fff;
+  background-position: 99% 50%;
 }
 
 .animation {
@@ -10961,29 +11057,32 @@ a.text-dark:focus {
   color: #000;
 }
 
-.animation:hover {
-  transform: scale(1.02);
-  transition: 0.3s;
+.register .card {
+  background-color: #FEEEBC;
+  border: none;
 }
 
-th,
-td {
-  color: #fff;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #5b2020;
-  min-height: 100vh;
-  color: #fff;
+.register .card .btn {
+  font-size: 20px;
 }
 
 .py-4 {
   width: 800px;
   height: 100%;
+}
+
+.login .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.login .card .bg-dark {
+  font-size: 20px;
+}
+
+.reset-password .card {
+  background-color: #FEEEBC;
+  border: none;
 }
 
 header {
@@ -10993,6 +11092,23 @@ header {
 header .navbar {
   background-image: url("http://localhost:8000/storage/logos/navbar.jpg");
   background-size: cover;
+}
+
+header .navbar img {
+  height: 30px;
+}
+
+header .navbar a {
+  color: #fff;
+}
+
+header .navbar a:hover {
+  color: #FEEEBC;
+}
+
+header .navbar .dropdown-menu a:hover {
+  color: #000;
+  background-color: #FEEEBC;
 }
 
 .container1 {
@@ -11019,5 +11135,200 @@ header .navbar {
 #restcard:hover {
   background-color: yellow;
   text-decoration: none;
+}
+
+.client-index .fa-arrow-left:hover {
+  color: #FEEEBC;
+  cursor: pointer;
+  -webkit-animation: 0.8s;
+          animation: 0.8s;
+  -webkit-animation-name: gira-poco;
+          animation-name: gira-poco;
+}
+
+@-webkit-keyframes gira-poco {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gira-poco {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.client-index .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.client-index .card .btn {
+  color: #FFF;
+  transition: all 0.5s;
+  position: relative;
+}
+
+.client-index .card .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.client-index .card .btn:hover::before {
+  opacity: 0;
+  transform: scale(0.5, 0.5);
+}
+
+.client-index .card .btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform: scale(1.2, 1.2);
+}
+
+.client-index .card .btn:hover::after {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  color: #fff;
+  background: #5b2020;
+  background: linear-gradient(30deg, #5b2020 56%, #3f1100 56%);
+}
+
+.card {
+  color: #000;
+  border: none;
+}
+
+.user-show .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.user-show .btn {
+  color: #FFF;
+  transition: all 0.5s;
+  position: relative;
+}
+
+.user-show .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.user-show .btn:hover::before {
+  opacity: 0;
+  transform: scale(0.5, 0.5);
+}
+
+.user-show .btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform: scale(1.2, 1.2);
+}
+
+.user-show .btn:hover::after {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.home .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.home .card .btn {
+  font-size: 20px;
+}
+
+.home .card .form-control {
+  max-width: 280px;
+  background-color: #FEEEBC;
+}
+
+.hosted {
+  margin-top: 100px;
+}
+
+.order-index .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.order-index .btn {
+  color: #000;
+  background-color: #FEEEBC;
+  font-size: 20px;
+}
+
+.order-index .btn:hover {
+  filter: brightness(90%);
+}
+
+.index-chart i {
+  color: #FEEEBC;
+}
+
+.index-chart i:hover {
+  transform: scale(1.3);
+}
+
+.dish-index .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.dish-index .btn {
+  color: #000;
+  background-color: #FEEEBC;
+  font-size: 20px;
+}
+
+.dish-index .btn:hover {
+  filter: brightness(90%);
 }
 
