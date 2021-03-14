@@ -64,6 +64,7 @@ class RegisterController extends Controller
           'name' => $data['name'],
           'email' => $data['email'],
           'indirizzo' => $data['indirizzo'],
+          'img' => 'default-logo.jpg',
           'piva' => $data['piva'],
           'password' => Hash::make($data['password']),
       ]);

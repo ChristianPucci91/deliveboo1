@@ -2,7 +2,7 @@
 
 @section('contenuto-pagina')
 
-<div class="container">
+<div class="container index-chart">
 
   <h2>Il tuo carrello</h2>
 
@@ -13,7 +13,7 @@
                   <th>Nome</th>
                   <th>Prezzo</th>
                   <th>Quantità</th>
-                  <th>Action</th>
+                  <th></th>
               </tr>
           </thead>
           <tbody>
@@ -31,8 +31,8 @@
                       </form>
 
                   </td>
-                  <td>
-                      <a href="{{route('cart.destroy', $item -> id)}}">Delete</a>
+                  <td class="pt-3">
+                      <a href="{{route('cart.destroy', $item -> id)}}"><i class="fas fa-times"></i></a>
                   </td>
               </tr>
   @endforeach
@@ -44,7 +44,7 @@
       Total Price: {{\Cart::session('_token')->getTotal()}}&euro;
   </h3>
 
-  <a class="btn btn-primary" href="{{url('/hosted')}}" role="button">Proceed to checkout</a>
+  <a class="btn btn-success mb-3 mt-2" href="{{url('/hosted')}}" role="button">Proceed to checkout</a>
 
 </div>
 

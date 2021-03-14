@@ -166,7 +166,7 @@
                   </div>
                   <hr class="mb-4">
                   <input id="nonce" name="payment_method_nonce" type="hidden" />
-                  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                  <button class="btn btn-success btn-lg btn-block" type="submit">Checkout</button>
               </form>
           </div>
       </div>

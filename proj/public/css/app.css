@@ -11092,8 +11092,6 @@ header {
 header .navbar {
   background-image: url("http://localhost:8000/storage/logos/navbar.jpg");
   background-size: cover;
-  height: 60px;
-  padding: 0;
 }
 
 header .navbar img {
@@ -11294,5 +11292,43 @@ body {
 
 .hosted {
   margin-top: 100px;
+}
+
+.order-index .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.order-index .btn {
+  color: #000;
+  background-color: #FEEEBC;
+  font-size: 20px;
+}
+
+.order-index .btn:hover {
+  filter: brightness(90%);
+}
+
+.index-chart i {
+  color: #FEEEBC;
+}
+
+.index-chart i:hover {
+  transform: scale(1.3);
+}
+
+.dish-index .card {
+  background-color: #FEEEBC;
+  border: none;
+}
+
+.dish-index .btn {
+  color: #000;
+  background-color: #FEEEBC;
+  font-size: 20px;
+}
+
+.dish-index .btn:hover {
+  filter: brightness(90%);
 }
 
