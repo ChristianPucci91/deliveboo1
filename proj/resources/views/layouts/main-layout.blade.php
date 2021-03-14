@@ -16,6 +16,7 @@
     <div id="app">
         @yield('contenuto-pagina')
     </div>
+    @yield('chart')
       <!-- contenuto pagina -->
       {{-- @yield('test') --}}
     {{-- </div> --}}

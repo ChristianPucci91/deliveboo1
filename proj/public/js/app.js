@@ -49886,7 +49886,8 @@ webpackContext.id = "./resources/js sync recursive \\.vue$/";
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // const files = require.context('./', true, /\.vue$/i)
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // require('jquery');
+// const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
@@ -50152,8 +50153,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\deliveboo1\proj\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo1\proj\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\adria\Desktop\deliveboo1\proj\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\adria\Desktop\deliveboo1\proj\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -4,5 +4,24 @@ header {
     .navbar{
       background-image: url('http://localhost:8000/storage/logos/navbar.jpg');
       background-size: cover;
+
+      img{
+        height: 30px;
+      }
+
+      a{
+        color: #fff;
+
+        &:hover{
+          color: #FEEEBC;
+        }
+      }
+
+      .dropdown-menu{
+        a:hover{
+          color: #000;
+          background-color: #FEEEBC;
+        }
+      }
     }
 }
