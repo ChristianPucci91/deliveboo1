@@ -49,7 +49,7 @@
         <input type="file" class="form-control border-0 p-0" name="img" value="">
         {{-- contenitore bottoni --}}
         <div class="d-flex justify-content-center">
-          <input type="submit" class=" mr-1 btn bg-dark text-white px-5" name="" value="Update">
+          <button type="submit" class=" mr-1 btn bg-dark text-white px-5" name="" value="Update">Update <i class="fas fa-upload"></i></button>
           {{-- <a href="{{ route('clear-img')}}" class=" ml-1 btn btn-danger">Delete</a> --}}
         </div>
 
