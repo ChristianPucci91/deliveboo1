@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html>
     <head>
         <title>Advance Search</title>
@@ -56,4 +56,4 @@
             fetch_customer_data(query);
         });
     });
-</script>
+</script> --}}

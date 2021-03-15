@@ -1,17 +1,14 @@
 <!-- estende da main-layout -->
 @extends('layouts.main-layout')
-
 @section('contenuto-pagina')
 
+{{-- PAGINA MENU RISTORATORE --}}
 <div class="container p-0 d-flex flex-column mb-5 user-show">
 
   <h1 class="mx-auto mb-3">{{$user -> name}}</h1>
 
   <img class="m-auto rounded" src="http://localhost:8000/storage/img/{{$user -> img}}" alt="" style="width: 60%">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-5">
-    {{-- <h1>Ecco il nostro menu:</h1> --}}
-    {{-- <img src="{{ $user -> img}}" alt="" style="min-width: 100vw"> --}}
-    {{-- <img class="m-auto" src="http://localhost:8000/storage/img/%7B%7B $user -> img}}" alt="" style="width: 60%"> --}}
     @foreach ($user -> dishes as $dish)
       <div v-if="{{ $dish -> visible}} == 1" class="col pr-0 pl-0 card-group">
 
@@ -34,7 +31,7 @@
 
   @section('script')
     <script>
-    (function($){
+    (function($){ //codice per rimanere nello stesso punto della pagina dove eravamo rimasti prima
       window.onbeforeunload = function(e){
       window.name += ' [' + $(window).scrollTop().toString() + '[' + $(window).scrollLeft().toString();
       };

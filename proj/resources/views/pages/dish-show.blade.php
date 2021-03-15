@@ -1,13 +1,13 @@
 <!-- estende da main-layout -->
-@extends('layouts.main-layout')
+{{-- @extends('layouts.main-layout') --}}
 
 <!-- contenuto home -->
-@section('contenuto-pagina')
+{{-- @section('contenuto-pagina')
 
-  <div class="content-show-edit">
+  <div class="content-show-edit"> --}}
 
     {{-- scheda --}}
-    <div class="box">
+    {{-- <div class="box">
 
      {{ $dish -> name}}
      {{ $dish -> ingredients }}
@@ -21,4 +21,4 @@
 
   </div>
 
-@endsection
+@endsection --}}

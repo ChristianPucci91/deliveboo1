@@ -61,11 +61,10 @@ class HomeController extends Controller
     public function dishStore(Request $request) {
       // inseriamo il nuovo piatto creato nel database associato
       // all'utente loggato
-      // $request = $this -> getCorrectPrice($request);
       $data = $request -> all(); // dati inseriti nel form
       Validator::make($data,
         [
-            'name' => 'required|string|min:5',
+            'name' => 'required|string|min:4|max:50',
             'ingredients' => 'required|string',
             'price' => 'required|numeric',
         ],
@@ -97,11 +96,10 @@ class HomeController extends Controller
 
     public function dishUpdate(Request $request, $id) {
       // aggiorniamo la modifica del piatto
-      // $request = $this -> getCorrectPrice($request);
       $data = $request -> all();
       Validator::make($data,
         [
-            'name' => 'required|string|min:4|max:10',
+            'name' => 'required|string|min:4|max:50',
             'ingredients' => 'required|string',
             'price' => 'required|numeric',
         ],
@@ -119,19 +117,6 @@ class HomeController extends Controller
       return redirect() -> route('dish-index');
 
     }
-
-    // funzione per moltiplicare per 100 il prezzo (inserito dall'utente)
-    // private function getCorrectPrice($request) {
-    //
-    //   $price = $request -> get('price') * 100;
-    //
-    //   $request -> merge([
-    //     'price' => $price
-    //   ]);
-    //
-    //   return $request;
-    //
-    // }
 
       public function dishDelete($id) {
       // cancellazione del piatto
@@ -159,7 +144,7 @@ class HomeController extends Controller
       $chart_ott=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 10)->count();
       $chart_nov=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 11)->count();
       $chart_dic=DB::table('orders')->select('count(user_id)')->where('user_id', '=', $user->id)->whereMonth('orders.created_at', '=', 12)->count();
-      // dd($chart_marzo);
+
       return view('pages.order-index',compact('orders', 'user', 'chart_gen', 'chart_feb', 'chart_mar', 'chart_apr', 'chart_mag', 'chart_giu', 'chart_lug', 'chart_ago', 'chart_set', 'chart_ott', 'chart_nov', 'chart_dic'));
     }
 
@@ -169,14 +154,12 @@ class HomeController extends Controller
          'img' => 'required|file|dimensions:ratio=16/9'
       ]);
 
-      // $this -> deleteImg();
 
       $image = $request -> file('img');
 
       $ext = $image -> getClientOriginalExtension();
       $name = rand(100000,999999). '_' . time();
       $file = $name . '.'. $ext;
-      // $file = 'http://localhost:8000/storage/img/' . $name . '.'. $ext;
 
       $user = Auth::user();
       $user -> img = $file;
