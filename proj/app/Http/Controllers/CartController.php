@@ -9,7 +9,6 @@ use App\User;
 class CartController extends Controller
 {
     public function add(Dish $dish) {
-        // dd($dish);
         \Cart::session('_token')->add(array(
             'id' => $dish->id,
             'name' => $dish->name,
@@ -19,9 +18,6 @@ class CartController extends Controller
             'user_id' => $dish->user_id,
             'associatedModel' => $dish
         ));
-
-        // $user = $dish->user_id;
-        // dd($user);
 
         return back();
     }

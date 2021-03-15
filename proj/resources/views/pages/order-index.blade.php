@@ -1,6 +1,6 @@
 @extends('layouts.main-layout')
-
 @section('chart')
+{{-- LISTA ORDINI RISTORATORI CON GRAFICO --}}
 
   <div class="container order-index text-center">
 
@@ -47,7 +47,7 @@
 
         @endforeach
     </div>
-
+    
   </div>
 
 
@@ -69,7 +69,7 @@
                 labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', ' Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
                 datasets: [{
                     label: 'Ordini per mese',
-                    backgroundColor: '#FEEEBC',
+                    backgroundColor: '#92D293',
                     borderColor: 'rgb(255, 99, 132)',
                     data: [
                         {{$chart_gen}},

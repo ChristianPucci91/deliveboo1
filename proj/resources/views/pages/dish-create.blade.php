@@ -1,6 +1,6 @@
 @extends('layouts.main-layout')
-
 @section('contenuto-pagina')
+{{-- CREAZIONE DEL PIATTO --}}
 
   <form class="form-group mt-4" action="{{ route('dish-store')}}" method="post">
     @csrf
@@ -30,7 +30,7 @@
 
     <div class="form-check mt-2">
 
-      <input checked type="radio" name="visible" value="1" class="form-check-input">
+      <input checked type="radio" name="visible" value="1" class="form-check-input"> {{-- il piatto creato parte come visibile di default --}} 
       <label for="visible" class="form-check-label">Visible</label>
 
     </div>
@@ -41,8 +41,6 @@
       <label for="visible" class="form-check-label">Not Visible</label>
 
     </div>
-
-
 
     <input type="submit" name="" value="Salva" class="btn btn-success mt-3 mb-4">
 
