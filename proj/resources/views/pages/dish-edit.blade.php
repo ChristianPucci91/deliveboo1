@@ -1,7 +1,6 @@
 @extends('layouts.main-layout')
-
 @section('contenuto-pagina')
-
+{{-- MODIFICO IL PIATTO --}}
   <form class="form-group mt-4" action="{{ route('dish-update', $dish -> id)}}" method="post">
     @csrf
     @method('post')
@@ -21,7 +20,7 @@
          </span>
       @enderror
     <label for="price">Price</label>
-    {{-- <input type="text" name="price" value="{{ $dish -> price / 100}}" class="form-control mb-3 @error('price') is-invalid @enderror"> --}}
+    
     <input type="text" name="price" value="{{ $dish -> price}}" class="form-control mb-3 @error('price') is-invalid @enderror">
       @error('price')
          <span class="invalid-feedback" role="alert">
@@ -32,8 +31,8 @@
     <div class="form-check mt-2">
 
       <input checked class="form-check-input" type="radio" name="visible"
-        @if ($dish -> visible == 1)
-         checked
+        @if ($dish -> visible == 1) {{-- per lasciare visibile il check rispetto a quanto abbiamo selezionato --}}
+         checked 
        @endif value="1">
       <label for="visible" class="form-check-label" >Visible</label>
 
@@ -41,7 +40,7 @@
     <div class="form-check mt-2">
 
       <input class="form-check-input" type="radio" name="visible"
-        @if ($dish -> visible == 0)
+        @if ($dish -> visible == 0) {{-- per lasciare non visibile il check rispetto a quanto abbiamo selezionato --}}
          checked
        @endif value="0">
       <label for="visible" class="form-check-label" >Not Visible</label>

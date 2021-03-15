@@ -1,7 +1,7 @@
 @extends('layouts.main-layout')
-
 @section('contenuto-pagina')
 
+{{-- PAGINA DEL CARRELLO --}}
 <div class="container index-chart">
 
   <h2>Il tuo carrello</h2>
@@ -21,7 +21,6 @@
               <tr>
                   <td scope="row">{{$item->name}}</td>
                   <td>
-                      {{-- {{$item->price}} --}}
                       {{Cart::session('_token')->get($item->id) -> getPriceSum()}}&euro;
                   </td>
                   <td>
@@ -48,7 +47,4 @@
 
 </div>
 
-
-
-{{-- {{dd(\Cart::session('_token')->getContent())}} --}}
 @endsection

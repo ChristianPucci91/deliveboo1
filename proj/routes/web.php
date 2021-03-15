@@ -97,7 +97,6 @@ $gateway = new Braintree\Gateway([
 
 $token = $gateway->ClientToken()->generate();
 $cartItems = \Cart::session('_token') -> getContent();
-// return view('clientPage.index-cart', compact('cartItems'));
 
 $cartItems = \Cart::session('_token') -> getContent();
 
@@ -115,7 +114,6 @@ $gateway = new Braintree\Gateway([
   'publicKey' => config('services.braintree.publicKey'),
   'privateKey' => config('services.braintree.privateKey')
 ]);
-// dd($request);
 $amount = $request->amount;
 $nonce = $request->payment_method_nonce;
 $firstName = $request->firstName;

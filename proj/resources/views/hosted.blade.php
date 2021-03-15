@@ -1,3 +1,4 @@
+{{-- FORM PAGAMENTO --}}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -28,12 +29,8 @@
 
   <div class="container hosted">
 
-  {{-- </div> --}}
-
 
   @extends('layouts.main-layout')
-
-  {{-- @section('contenuto-pagina') --}}
 
     @if (session('success_message'))
       <div class="alert alert-success">
@@ -45,7 +42,7 @@
     @if (count($errors) > 0)
       <div class="alert alert-danger">
         <ul>
-          @foreach ($errors -> all() as $error)
+          @foreach ($errors -> all() as $error) {{-- stampo tutti gli errori possibili che possono comparire --}}
             <li>{{$error}}</li>
           @endforeach
         </ul>
@@ -54,9 +51,6 @@
     @endif
 
 
-    {{-- bootstrap form --}}
-
-    {{-- <a href="/"><i class="fas fa-lg fa-arrow-circle-left"> Homepage</i></a> --}}
     <div class="row">
 
           <div class="col-md-8 order-md-1">
@@ -117,17 +111,12 @@
                       </div>
                   </div>
 
-                  {{-- prova --}}
-
                   <div class="row d-none">
                     <label for="amount">
                         <span class="input-label">Amount</span>
                         <div class="input-wrapper amount-wrapper">
-                            {{-- <input id="user_id" name="user_id" type="" value="" readonly>&euro; --}}
-                            {{-- {{\Cart::session('_token') -> getContent()}} --}}
 
                             @foreach ($cartItems as $item)
-                              {{-- {{$item -> associatedModel -> user_id}} --}}
                               <input id="user_id" name="user_id" type="" value="{{$item -> associatedModel -> user_id}}" readonly>&euro;
                               @break
                             @endforeach
@@ -170,14 +159,6 @@
               </form>
           </div>
       </div>
-      {{-- <footer class="my-5 pt-5 text-muted text-center text-small">
-          <p class="mb-1">© 2017-2019 Company Name</p>
-          <ul class="list-inline">
-              <li class="list-inline-item"><a href="#">Privacy</a></li>
-              <li class="list-inline-item"><a href="#">Terms</a></li>
-              <li class="list-inline-item"><a href="#">Support</a></li>
-          </ul>
-      </footer> --}}
   </div>
 
   </body>
@@ -232,8 +213,6 @@
             console.error(hostedFieldsErr);
             return;
           }
-
-          // submit.removeAttribute('disabled');
 
           form.addEventListener('submit', function (event) {
             event.preventDefault();

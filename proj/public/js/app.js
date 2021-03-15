@@ -49886,19 +49886,17 @@ webpackContext.id = "./resources/js sync recursive \\.vue$/";
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // require('jquery');
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
 
 files.keys().map(function (key) {
-  return Vue.component(key.split('/').pop().split('.')[0], files(key)["default"]);
+  return Vue.component(key.split("/").pop().split(".")[0], files(key)["default"]);
 });
 
 function init() {
   var app = new Vue({
-    el: '#app',
+    el: "#app",
     data: {
       allTypologies: [],
       flightListType: [],
@@ -49910,11 +49908,8 @@ function init() {
     mounted: function mounted() {
       var _this = this;
 
-      axios.get('/getTypologies').then(function (response) {
-        _this.allTypologies = response.data; // this.allTypologies.forEach((element) => {
-        //  element.visibile = false;
-        // });
-
+      axios.get("/getTypologies").then(function (response) {
+        _this.allTypologies = response.data;
         console.log(_this.allTypologies);
       });
       this.getRandUsers();
@@ -49923,7 +49918,7 @@ function init() {
       getRestaurant: function getRestaurant(id) {
         var _this2 = this;
 
-        axios.get('/getUserId/' + id).then(function (response) {
+        axios.get("/getUserId/" + id).then(function (response) {
           _this2.userArray = response.data;
           _this2.showTypology = !_this2.showTypology;
           _this2.showUser = !_this2.showUser;
@@ -49933,15 +49928,14 @@ function init() {
       getRandUsers: function getRandUsers() {
         var _this3 = this;
 
-        axios.get('/getRandUsers').then(function (response) {
+        axios.get("/getRandUsers").then(function (response) {
           while (_this3.randUsers.length < 6) {
             var j = Math.floor(Math.random() * (10 - 1)) + 1;
 
             while (!_this3.randUsers.includes(response.data[j])) {
               _this3.randUsers.push(response.data[j]);
             }
-          } // console.log(this.randUsers);
-
+          }
         });
       }
     }
